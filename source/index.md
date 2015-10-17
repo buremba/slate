@@ -13,6 +13,10 @@ search: true
 ---
 # Introduction
 
+```
+We have language bindings in java, php, python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+```
+
 An analytics platform API that lets you create your own analytics services.
 
 ### Version
@@ -63,7 +67,6 @@ ApiClient apiClient = new ApiClient();
 
 EventstreamApi api = new EventstreamApi();
 api.subscribe();
-    
 
 ```
 
@@ -91,13 +94,19 @@ Subscribes the event stream periodically to the client.
 
 Funnel Analyzer module
 
-## Create funnel
+## Execute query
 ```shell
 curl "https://app.getrakam.com/funnel/analyze"
   -H "read_key: myread_key"
--X POST -d '{"project" : "str", "steps" : [
+-X POST -d '{"project" : "str"
+, "steps" : [
   "collection" : "str", "filterExpression" : "str"
-], "dimension" : "str", "startDate" : "2015-01-20", "endDate" : "2015-01-20", "enableOtherGrouping" : false}'
+]
+, "dimension" : "str"
+, "startDate" : "2015-01-20"
+, "endDate" : "2015-01-20"
+, "enableOtherGrouping" : false
+}'
 ```
 
 ```python
@@ -123,7 +132,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 FunnelApi api = new FunnelApi();
 api.analyze(funnelQuery);
-    
 
 ```
 
@@ -160,7 +168,7 @@ $api->analyze(funnel_query);
 
 Retention Analyzer module
 
-## Create retention table
+## Execute query
 ```shell
 curl "https://app.getrakam.com/retention/analyze"
   -H "read_key: myread_key"
@@ -190,7 +198,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 RetentionApi api = new RetentionApi();
 api.execute();
-    
 
 ```
 
@@ -219,7 +226,9 @@ User module for Rakam
 ## Create new user
 ```shell
 curl "https://app.getrakam.com/user/create"
--X POST -d '{"project" : "str", "properties" : {"prop": value}}'
+-X POST -d '{"project" : "str"
+, "properties" : {"prop": value}
+}'
 ```
 
 ```python
@@ -244,7 +253,6 @@ ApiClient apiClient = new ApiClient();
 
 UserApi api = new UserApi();
 api.create(userHttpServiceCreate);
-    
 
 ```
 
@@ -260,6 +268,14 @@ $api = new Swagger\Client\UserApi($api_client);
 $api->create(user_http_service_create);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"identifier" : null
+}
 ```
 
 ### HTTP Request
@@ -299,7 +315,6 @@ ApiClient apiClient = new ApiClient();
 
 UserApi api = new UserApi();
 api.getUser(project, user);
-    
 
 ```
 
@@ -315,6 +330,14 @@ $api = new Swagger\Client\UserApi($api_client);
 $api->getUser(project, user);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"project" : "str", "id" : null, "properties" : {"prop": value}
+}
 ```
 
 ### HTTP Request
@@ -354,7 +377,6 @@ ApiClient apiClient = new ApiClient();
 
 UserApi api = new UserApi();
 api.getEvents(project, user, limit, offset);
-    
 
 ```
 
@@ -370,6 +392,16 @@ $api = new Swagger\Client\UserApi($api_client);
 $api->getEvents(project, user, limit, offset);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+[
+  null
+]
+}
 ```
 
 ### HTTP Request
@@ -411,7 +443,6 @@ ApiClient apiClient = new ApiClient();
 
 UserApi api = new UserApi();
 api.metadata(project);
-    
 
 ```
 
@@ -429,6 +460,16 @@ $api->metadata(project);
 
 ```
 
+> The above command returns JSON structured like this:
+
+```json
+{
+"columns" : [
+  "name" : "str", "type" : "str", "nullable" : false, "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+], "identifierColumn" : "str"
+}
+```
+
 ### HTTP Request
 `POST /user/metadata`
 ### Form Parameters
@@ -440,9 +481,15 @@ $api->metadata(project);
 ## Search users
 ```shell
 curl "https://app.getrakam.com/user/search"
--X POST -d '{"project" : "str", "filter" : "str", "event_filters" : [
+-X POST -d '{"project" : "str"
+, "filter" : "str"
+, "event_filters" : [
   "collection" : "str", "aggregation" : "field" : "str", "minimum" : 0, "maximum" : 0, "type" : "str", "filterExpression" : "str"
-], "sorting" : "column" : "str", "order" : "str", "offset" : 0, "limit" : 0}'
+]
+, "sorting" : "column" : "str", "order" : "str"
+, "offset" : 0
+, "limit" : 0
+}'
 ```
 
 ```python
@@ -467,7 +514,6 @@ ApiClient apiClient = new ApiClient();
 
 UserApi api = new UserApi();
 api.search(userHttpServiceSearch);
-    
 
 ```
 
@@ -483,6 +529,20 @@ $api = new Swagger\Client\UserApi($api_client);
 $api->search(user_http_service_search);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"metadata" : [
+  "name" : "str", "type" : "str", "nullable" : false, "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+], "result" : [
+  [
+  null
+]
+], "error" : "message" : "str", "sqlState" : "str", "errorCode" : 0, "properties" : {"prop": value}, "failed" : false
+}
 ```
 
 ### HTTP Request
@@ -526,7 +586,6 @@ ApiClient apiClient = new ApiClient();
 
 UserApi api = new UserApi();
 api.setUserProperty(project, user, property, value);
-    
 
 ```
 
@@ -542,6 +601,14 @@ $api = new Swagger\Client\UserApi($api_client);
 $api->setUserProperty(project, user, property, value);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"success" : false, "message" : "str"
+}
 ```
 
 ### HTTP Request
@@ -590,7 +657,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 UsermailboxApi api = new UsermailboxApi();
 api.get(project, user, parent, limit, offset);
-    
 
 ```
 
@@ -607,6 +673,16 @@ $api = new Swagger\Client\UsermailboxApi($api_client);
 $api->get(project, user, parent, limit, offset);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+[
+  "id" : 0, "content" : "str", "from_user" : null, "to_user" : null, "parentId" : 0, "seen" : false, "time" : 0, "project" : "str"
+]
+}
 ```
 
 ### HTTP Request
@@ -654,7 +730,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 UsermailboxApi api = new UsermailboxApi();
 api.getConnectedUsers(project);
-    
 
 ```
 
@@ -671,6 +746,16 @@ $api = new Swagger\Client\UsermailboxApi($api_client);
 $api->getConnectedUsers(project);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+[
+  null
+]
+}
 ```
 
 ### HTTP Request
@@ -711,7 +796,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 UsermailboxApi api = new UsermailboxApi();
 api.listen(project);
-    
 
 ```
 
@@ -770,7 +854,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("write_key").setApiKey("myApiKey");
 UsermailboxApi api = new UsermailboxApi();
 api.markAsRead(project, user, messageIds);
-    
 
 ```
 
@@ -787,6 +870,14 @@ $api = new Swagger\Client\UsermailboxApi($api_client);
 $api->markAsRead(project, user, message_ids);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"success" : false, "message" : "str"
+}
 ```
 
 ### HTTP Request
@@ -832,7 +923,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("write_key").setApiKey("myApiKey");
 UsermailboxApi api = new UsermailboxApi();
 api.send(project, fromUser, toUser, parent, message, timestamp);
-    
 
 ```
 
@@ -849,6 +939,14 @@ $api = new Swagger\Client\UsermailboxApi($api_client);
 $api->send(project, from_user, to_user, parent, message, timestamp);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"id" : 0, "content" : "str", "from_user" : null, "to_user" : null, "parentId" : 0, "seen" : false, "time" : 0, "project" : "str"
+}
 ```
 
 ### HTTP Request
@@ -904,7 +1002,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 RealtimeApi api = new RealtimeApi();
 api.create(project, name, chart, collections, aggregation, tableName, filter, measure, dimension);
-    
 
 ```
 
@@ -921,6 +1018,14 @@ $api = new Swagger\Client\RealtimeApi($api_client);
 $api->create(project, name, chart, collections, aggregation, table_name, filter, measure, dimension);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"success" : false, "message" : "str"
+}
 ```
 
 ### HTTP Request
@@ -969,7 +1074,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 RealtimeApi api = new RealtimeApi();
 api.delete(project, name);
-    
 
 ```
 
@@ -986,6 +1090,14 @@ $api = new Swagger\Client\RealtimeApi($api_client);
 $api->delete(project, name);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+null
+}
 ```
 
 ### HTTP Request
@@ -1027,7 +1139,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 RealtimeApi api = new RealtimeApi();
 api.get(project, tableName, filter, aggregate, dateStart, dateEnd);
-    
 
 ```
 
@@ -1044,6 +1155,14 @@ $api = new Swagger\Client\RealtimeApi($api_client);
 $api->get(project, table_name, filter, aggregate, date_start, date_end);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+null
+}
 ```
 
 ### HTTP Request
@@ -1089,7 +1208,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
 RealtimeApi api = new RealtimeApi();
 api.listReports(project);
-    
 
 ```
 
@@ -1106,6 +1224,16 @@ $api = new Swagger\Client\RealtimeApi($api_client);
 $api->listReports(project);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+[
+  null
+]
+}
 ```
 
 ### HTTP Request
@@ -1151,7 +1279,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
 AdminApi api = new AdminApi();
 api.getModules();
-    
 
 ```
 
@@ -1170,6 +1297,16 @@ $api->getModules();
 
 ```
 
+> The above command returns JSON structured like this:
+
+```json
+{
+[
+  null
+]
+}
+```
+
 ### HTTP Request
 `GET /admin/modules`
 # Materialized view
@@ -1180,7 +1317,13 @@ $api->getModules();
 ## Create view
 ```shell
 curl "https://app.getrakam.com/materialized-view/create"
--X POST -d '{"project" : "str", "name" : "str", "table_name" : "str", "query" : "str", "update_interval" : "str", "options" : {"prop": value}}'
+-X POST -d '{"project" : "str"
+, "name" : "str"
+, "table_name" : "str"
+, "query" : "str"
+, "update_interval" : "str"
+, "options" : {"prop": value}
+}'
 ```
 
 ```python
@@ -1205,7 +1348,6 @@ ApiClient apiClient = new ApiClient();
 
 MaterializedviewApi api = new MaterializedviewApi();
 api.create(materializedView);
-    
 
 ```
 
@@ -1221,6 +1363,14 @@ $api = new Swagger\Client\MaterializedviewApi($api_client);
 $api->create(materialized_view);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"success" : false, "message" : "str"
+}
 ```
 
 ### HTTP Request
@@ -1264,7 +1414,6 @@ ApiClient apiClient = new ApiClient();
 
 MaterializedviewApi api = new MaterializedviewApi();
 api.delete(project, name);
-    
 
 ```
 
@@ -1280,6 +1429,14 @@ $api = new Swagger\Client\MaterializedviewApi($api_client);
 $api->delete(project, name);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"success" : false, "message" : "str"
+}
 ```
 
 ### HTTP Request
@@ -1319,7 +1476,6 @@ ApiClient apiClient = new ApiClient();
 
 MaterializedviewApi api = new MaterializedviewApi();
 api.get(project, name);
-    
 
 ```
 
@@ -1335,6 +1491,14 @@ $api = new Swagger\Client\MaterializedviewApi($api_client);
 $api->get(project, name);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+null
+}
 ```
 
 ### HTTP Request
@@ -1374,7 +1538,6 @@ ApiClient apiClient = new ApiClient();
 
 MaterializedviewApi api = new MaterializedviewApi();
 api.listViews(project);
-    
 
 ```
 
@@ -1390,6 +1553,14 @@ $api = new Swagger\Client\MaterializedviewApi($api_client);
 $api->listViews(project);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+null
+}
 ```
 
 ### HTTP Request
@@ -1428,7 +1599,6 @@ ApiClient apiClient = new ApiClient();
 
 MaterializedviewApi api = new MaterializedviewApi();
 api.schema(project);
-    
 
 ```
 
@@ -1444,6 +1614,16 @@ $api = new Swagger\Client\MaterializedviewApi($api_client);
 $api->schema(project);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+[
+  null
+]
+}
 ```
 
 ### HTTP Request
@@ -1482,7 +1662,6 @@ ApiClient apiClient = new ApiClient();
 
 MaterializedviewApi api = new MaterializedviewApi();
 api.update();
-    
 
 ```
 
@@ -1510,11 +1689,18 @@ $api->update();
 ## Create stream
 ```shell
 curl "https://app.getrakam.com/continuous-query/create"
--X POST -d '{"project" : "str", "name" : "str", "query" : "str", "table_name" : "str", "collections" : [
+-X POST -d '{"project" : "str"
+, "name" : "str"
+, "query" : "str"
+, "table_name" : "str"
+, "collections" : [
   "str"
-], "partition_keys" : [
+]
+, "partition_keys" : [
   "str"
-], "options" : {"prop": value}}'
+]
+, "options" : {"prop": value}
+}'
 ```
 
 ```python
@@ -1539,7 +1725,6 @@ ApiClient apiClient = new ApiClient();
 
 ContinuousqueryApi api = new ContinuousqueryApi();
 api.create(continuousQuery);
-    
 
 ```
 
@@ -1555,6 +1740,14 @@ $api = new Swagger\Client\ContinuousqueryApi($api_client);
 $api->create(continuous_query);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"success" : false, "message" : "str"
+}
 ```
 
 ### HTTP Request
@@ -1599,7 +1792,6 @@ ApiClient apiClient = new ApiClient();
 
 ContinuousqueryApi api = new ContinuousqueryApi();
 api.delete(project, name);
-    
 
 ```
 
@@ -1615,6 +1807,14 @@ $api = new Swagger\Client\ContinuousqueryApi($api_client);
 $api->delete(project, name);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+null
+}
 ```
 
 ### HTTP Request
@@ -1654,7 +1854,6 @@ ApiClient apiClient = new ApiClient();
 
 ContinuousqueryApi api = new ContinuousqueryApi();
 api.listQueries(project);
-    
 
 ```
 
@@ -1670,6 +1869,14 @@ $api = new Swagger\Client\ContinuousqueryApi($api_client);
 $api->listQueries(project);
 
 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+null
+}
 ```
 
 ### HTTP Request
@@ -1708,7 +1915,6 @@ ApiClient apiClient = new ApiClient();
 
 ContinuousqueryApi api = new ContinuousqueryApi();
 api.schema(project);
-    
 
 ```
 
@@ -1726,6 +1932,16 @@ $api->schema(project);
 
 ```
 
+> The above command returns JSON structured like this:
+
+```json
+{
+[
+  null
+]
+}
+```
+
 ### HTTP Request
 `POST /continuous-query/schema`
 ### Form Parameters
@@ -1736,6 +1952,21 @@ $api->schema(project);
 
 
 ## Definitions
+### EventFilter
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|collection||false|string||
+|aggregation||false|[EventFilterAggregation](#eventfilteraggregation)||
+|filterExpression||false|string||
+
+
+### FunnelStep
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|collection||false|string||
+|filterExpression||false|string||
+
+
 ### Sorting
 |name|description|required|schema|default|
 |----|----|----|----|----|
