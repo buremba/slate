@@ -26,7 +26,7 @@
       </span>
     </a>
     <div class="tocify-wrapper">
-     <h1 class="text-logo" style="margin: 7px 15px">RAKAM</h1>
+     <!--<h1 class="text-logo" style="margin: 7px 15px">RAKAM</h1>-->
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="java">java</a>
@@ -47,6 +47,8 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id="introduction">Introduction</h1>
+<pre class="highlight plaintext"><code>We have language bindings in java, php, python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+</code></pre>
 
 <p>An analytics platform API that lets you create your own analytics services.</p>
 
@@ -97,7 +99,6 @@ BasePath: /</p>
 <span class="n">EventstreamApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventstreamApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">subscribe</span><span class="o">();</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -122,12 +123,18 @@ $api-&gt;subscribe();
 
 <p>Funnel Analyzer module</p>
 
-<h2 id="create-funnel">Create funnel</h2>
+<h2 id="execute-query">Execute query</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://app.getrakam.com/funnel/analyze"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'{"project" : "str", "steps" : [
+-X POST -d <span class="s1">'{"project" : "str"
+, "steps" : [
   "collection" : "str", "filterExpression" : "str"
-], "dimension" : "str", "startDate" : "2015-01-20", "endDate" : "2015-01-20", "enableOtherGrouping" : false}'</span>
+]
+, "dimension" : "str"
+, "startDate" : "2015-01-20"
+, "endDate" : "2015-01-20"
+, "enableOtherGrouping" : false
+}'</span>
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">swagger_client</span><span class="err">/</span><span class="nn">apis</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -149,7 +156,6 @@ $api-&gt;subscribe();
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">FunnelApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FunnelApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">analyze</span><span class="o">(</span><span class="n">funnelQuery</span><span class="o">);</span>
-
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -222,7 +228,7 @@ $api-&gt;analyze(funnel_query);
 
 <p>Retention Analyzer module</p>
 
-<h2 id="create-retention-table">Create retention table</h2>
+<h2 id="execute-query">Execute query</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://app.getrakam.com/retention/analyze"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'{}'</span>
@@ -247,7 +253,6 @@ $api-&gt;analyze(funnel_query);
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">RetentionApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RetentionApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
-
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -274,7 +279,9 @@ $api-&gt;execute();
 
 <h2 id="create-new-user">Create new user</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://app.getrakam.com/user/create"</span>
--X POST -d <span class="s1">'{"project" : "str", "properties" : {"prop": value}}'</span>
+-X POST -d <span class="s1">'{"project" : "str"
+, "properties" : {"prop": value}
+}'</span>
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">swagger_client</span><span class="err">/</span><span class="nn">apis</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -296,7 +303,6 @@ $api-&gt;execute();
 <span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">userHttpServiceCreate</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -310,6 +316,14 @@ $api-&gt;create(user_http_service_create);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"identifier"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -363,7 +377,6 @@ $api-&gt;create(user_http_service_create);
 <span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">getUser</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">user</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -377,6 +390,14 @@ $api-&gt;getUser(project, user);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"project"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nt">"properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"prop"</span><span class="p">:</span><span class="w"> </span><span class="err">value</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -430,7 +451,6 @@ $api-&gt;getUser(project, user);
 <span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">getEvents</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">user</span><span class="o">,</span> <span class="n">limit</span><span class="o">,</span> <span class="n">offset</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -444,6 +464,16 @@ $api-&gt;getEvents(project, user, limit, offset);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">[</span><span class="w">
+  </span><span class="err">null</span><span class="w">
+</span><span class="err">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -509,7 +539,6 @@ $api-&gt;getEvents(project, user, limit, offset);
 <span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">metadata</span><span class="o">(</span><span class="n">project</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -523,6 +552,16 @@ $api-&gt;metadata(project);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"columns"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="s2">"type"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="s2">"nullable"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"unique"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"descriptiveName"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="s2">"description"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="s2">"category"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">],</span><span class="w"> </span><span class="nt">"identifierColumn"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -548,9 +587,15 @@ $api-&gt;metadata(project);
 
 <h2 id="search-users">Search users</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://app.getrakam.com/user/search"</span>
--X POST -d <span class="s1">'{"project" : "str", "filter" : "str", "event_filters" : [
+-X POST -d <span class="s1">'{"project" : "str"
+, "filter" : "str"
+, "event_filters" : [
   "collection" : "str", "aggregation" : "field" : "str", "minimum" : 0, "maximum" : 0, "type" : "str", "filterExpression" : "str"
-], "sorting" : "column" : "str", "order" : "str", "offset" : 0, "limit" : 0}'</span>
+]
+, "sorting" : "column" : "str", "order" : "str"
+, "offset" : 0
+, "limit" : 0
+}'</span>
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">swagger_client</span><span class="err">/</span><span class="nn">apis</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -572,7 +617,6 @@ $api-&gt;metadata(project);
 <span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">search</span><span class="o">(</span><span class="n">userHttpServiceSearch</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -586,6 +630,20 @@ $api-&gt;search(user_http_service_search);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"name"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="s2">"type"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="s2">"nullable"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"unique"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"descriptiveName"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="s2">"description"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="s2">"category"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">],</span><span class="w"> </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+  </span><span class="kc">null</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">],</span><span class="w"> </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"message"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="nt">"sqlState"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="nt">"errorCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"prop"</span><span class="p">:</span><span class="w"> </span><span class="err">value</span><span class="p">},</span><span class="w"> </span><span class="nt">"failed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -663,7 +721,6 @@ $api-&gt;search(user_http_service_search);
 <span class="n">UserApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">setUserProperty</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">user</span><span class="o">,</span> <span class="n">property</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -677,6 +734,14 @@ $api-&gt;setUserProperty(project, user, property, value);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -746,7 +811,6 @@ $api-&gt;setUserProperty(project, user, property, value);
 <span class="n">UsermailboxApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UsermailboxApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">user</span><span class="o">,</span> <span class="n">parent</span><span class="o">,</span> <span class="n">limit</span><span class="o">,</span> <span class="n">offset</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -761,6 +825,16 @@ $api-&gt;get(project, user, parent, limit, offset);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">[</span><span class="w">
+  </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"content"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="nt">"from_user"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nt">"to_user"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nt">"parentId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"seen"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"project"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="err">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -836,7 +910,6 @@ $api-&gt;get(project, user, parent, limit, offset);
 <span class="n">UsermailboxApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UsermailboxApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">getConnectedUsers</span><span class="o">(</span><span class="n">project</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -851,6 +924,16 @@ $api-&gt;getConnectedUsers(project);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">[</span><span class="w">
+  </span><span class="err">null</span><span class="w">
+</span><span class="err">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -899,7 +982,6 @@ $api-&gt;getConnectedUsers(project);
 <span class="n">apiClient</span><span class="o">.</span><span class="na">getAuthentication</span><span class="o">(</span><span class="s">"read_key"</span><span class="o">).</span><span class="na">setApiKey</span><span class="o">(</span><span class="s">"myApiKey"</span><span class="o">);</span>
 <span class="n">UsermailboxApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UsermailboxApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">listen</span><span class="o">(</span><span class="n">project</span><span class="o">);</span>
-
 
 </code></pre>
 <pre class="highlight php"><code>
@@ -966,7 +1048,6 @@ $api-&gt;listen(project);
 <span class="n">UsermailboxApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UsermailboxApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">markAsRead</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">user</span><span class="o">,</span> <span class="n">messageIds</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -981,6 +1062,14 @@ $api-&gt;markAsRead(project, user, message_ids);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1044,7 +1133,6 @@ $api-&gt;markAsRead(project, user, message_ids);
 <span class="n">UsermailboxApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UsermailboxApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">fromUser</span><span class="o">,</span> <span class="n">toUser</span><span class="o">,</span> <span class="n">parent</span><span class="o">,</span> <span class="n">message</span><span class="o">,</span> <span class="n">timestamp</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1059,6 +1147,14 @@ $api-&gt;send(project, from_user, to_user, parent, message, timestamp);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"content"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w"> </span><span class="nt">"from_user"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nt">"to_user"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nt">"parentId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"seen"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">"project"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1144,7 +1240,6 @@ $api-&gt;send(project, from_user, to_user, parent, message, timestamp);
 <span class="n">RealtimeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RealtimeApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">name</span><span class="o">,</span> <span class="n">chart</span><span class="o">,</span> <span class="n">collections</span><span class="o">,</span> <span class="n">aggregation</span><span class="o">,</span> <span class="n">tableName</span><span class="o">,</span> <span class="n">filter</span><span class="o">,</span> <span class="n">measure</span><span class="o">,</span> <span class="n">dimension</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1159,6 +1254,14 @@ $api-&gt;create(project, name, chart, collections, aggregation, table_name, filt
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1256,7 +1359,6 @@ $api-&gt;create(project, name, chart, collections, aggregation, table_name, filt
 <span class="n">RealtimeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RealtimeApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1271,6 +1373,14 @@ $api-&gt;delete(project, name);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1326,7 +1436,6 @@ $api-&gt;delete(project, name);
 <span class="n">RealtimeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RealtimeApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">tableName</span><span class="o">,</span> <span class="n">filter</span><span class="o">,</span> <span class="n">aggregate</span><span class="o">,</span> <span class="n">dateStart</span><span class="o">,</span> <span class="n">dateEnd</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1341,6 +1450,14 @@ $api-&gt;get(project, table_name, filter, aggregate, date_start, date_end);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1420,7 +1537,6 @@ $api-&gt;get(project, table_name, filter, aggregate, date_start, date_end);
 <span class="n">RealtimeApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RealtimeApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">listReports</span><span class="o">(</span><span class="n">project</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1435,6 +1551,16 @@ $api-&gt;listReports(project);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">[</span><span class="w">
+  </span><span class="err">null</span><span class="w">
+</span><span class="err">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1488,7 +1614,6 @@ $api-&gt;listReports(project);
 <span class="n">AdminApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AdminApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">getModules</span><span class="o">();</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1504,6 +1629,16 @@ $api-&gt;getModules();
 
 </code></pre>
 
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">[</span><span class="w">
+  </span><span class="err">null</span><span class="w">
+</span><span class="err">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET /admin/modules</code></p>
@@ -1512,7 +1647,13 @@ $api-&gt;getModules();
 
 <h2 id="create-view">Create view</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://app.getrakam.com/materialized-view/create"</span>
--X POST -d <span class="s1">'{"project" : "str", "name" : "str", "table_name" : "str", "query" : "str", "update_interval" : "str", "options" : {"prop": value}}'</span>
+-X POST -d <span class="s1">'{"project" : "str"
+, "name" : "str"
+, "table_name" : "str"
+, "query" : "str"
+, "update_interval" : "str"
+, "options" : {"prop": value}
+}'</span>
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">swagger_client</span><span class="err">/</span><span class="nn">apis</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -1534,7 +1675,6 @@ $api-&gt;getModules();
 <span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">materializedView</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1548,6 +1688,14 @@ $api-&gt;create(materialized_view);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1625,7 +1773,6 @@ $api-&gt;create(materialized_view);
 <span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1639,6 +1786,14 @@ $api-&gt;delete(project, name);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1692,7 +1847,6 @@ $api-&gt;delete(project, name);
 <span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1706,6 +1860,14 @@ $api-&gt;get(project, name);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1759,7 +1921,6 @@ $api-&gt;get(project, name);
 <span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">listViews</span><span class="o">(</span><span class="n">project</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1773,6 +1934,14 @@ $api-&gt;listViews(project);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1820,7 +1989,6 @@ $api-&gt;listViews(project);
 <span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">schema</span><span class="o">(</span><span class="n">project</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1834,6 +2002,16 @@ $api-&gt;schema(project);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">[</span><span class="w">
+  </span><span class="err">null</span><span class="w">
+</span><span class="err">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1881,7 +2059,6 @@ $api-&gt;schema(project);
 <span class="n">MaterializedviewApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MaterializedviewApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">update</span><span class="o">();</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1904,11 +2081,18 @@ $api-&gt;update();
 
 <h2 id="create-stream">Create stream</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://app.getrakam.com/continuous-query/create"</span>
--X POST -d <span class="s1">'{"project" : "str", "name" : "str", "query" : "str", "table_name" : "str", "collections" : [
+-X POST -d <span class="s1">'{"project" : "str"
+, "name" : "str"
+, "query" : "str"
+, "table_name" : "str"
+, "collections" : [
   "str"
-], "partition_keys" : [
+]
+, "partition_keys" : [
   "str"
-], "options" : {"prop": value}}'</span>
+]
+, "options" : {"prop": value}
+}'</span>
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">swagger_client</span><span class="err">/</span><span class="nn">apis</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -1930,7 +2114,6 @@ $api-&gt;update();
 <span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">continuousQuery</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -1944,6 +2127,14 @@ $api-&gt;create(continuous_query);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"success"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2027,7 +2218,6 @@ $api-&gt;create(continuous_query);
 <span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -2041,6 +2231,14 @@ $api-&gt;delete(project, name);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2094,7 +2292,6 @@ $api-&gt;delete(project, name);
 <span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">listQueries</span><span class="o">(</span><span class="n">project</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -2108,6 +2305,14 @@ $api-&gt;listQueries(project);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2155,7 +2360,6 @@ $api-&gt;listQueries(project);
 <span class="n">ContinuousqueryApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ContinuousqueryApi</span><span class="o">();</span>
 <span class="n">api</span><span class="o">.</span><span class="na">schema</span><span class="o">(</span><span class="n">project</span><span class="o">);</span>
 
-
 </code></pre>
 <pre class="highlight php"><code>
 
@@ -2169,6 +2373,16 @@ $api-&gt;schema(project);
 
 
 </code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="err">[</span><span class="w">
+  </span><span class="err">null</span><span class="w">
+</span><span class="err">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -2193,6 +2407,67 @@ $api-&gt;schema(project);
 </tbody></table>
 
 <h2 id="definitions">Definitions</h2>
+
+<h3 id="eventfilter">EventFilter</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>required</th>
+<th>schema</th>
+<th>default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>collection</td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>aggregation</td>
+<td></td>
+<td>false</td>
+<td><a href="#eventfilteraggregation">EventFilterAggregation</a></td>
+<td></td>
+</tr>
+<tr>
+<td>filterExpression</td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="funnelstep">FunnelStep</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>required</th>
+<th>schema</th>
+<th>default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>collection</td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>filterExpression</td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
 
 <h3 id="sorting">Sorting</h3>
 
