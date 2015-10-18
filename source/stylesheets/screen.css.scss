@@ -64,6 +64,7 @@ html, body {
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
   //overflow-x: hidden;
+  font-family:Source Sans Pro, Arial, sans-serifsans-serif
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -87,7 +88,7 @@ html, body {
   overflow-x: hidden;
   position: fixed;
   z-index: 30;
-  top: 0;
+  top: 60px;
   left: 0;
   bottom: 0;
   width: $nav-width;
@@ -648,4 +649,50 @@ html, body {
   %right-col + %left-col {
     margin-top: $main-padding;
   }
+}
+
+#top-menu a {
+    color: rgba(255, 255, 255, 0.69);
+    font-size: 11px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+
+a.nice {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 10px;
+    padding: 9px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    margin-top: -9px;
+}
+
+#top-menu a:hover {
+    color: #fff;
+}
+
+a.nice:hover {
+    color: white !important;
+    border-color: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.27);
+}
+
+#logo-large {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #fff;
+    margin: 11px 10px;
+    float: left;
+    width: 210px;
+    background-size: 100px;
+    display: block;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+pre.highlight code {
+  padding:0
 }

@@ -40,7 +40,22 @@ under the License.
     <% end %>
   </head>
 
-  <body class="<%= page_classes %>">
+  <body class="<%= page_classes %>" style="margin-top:60px">
+  <div class="header" style="
+    position: fixed;
+    top: 0;
+    background: #00bff3;
+    width: 100%;
+    height: 60px;
+    z-index: 100000;
+                           "><div id="logo-large">Rakam</div>
+<div id="top-menu" style="margin:23px">
+  <a href="//getrakam.com/doc">Documentation</a><a href="//getrakam.com/support">Help &amp; Support</a>
+<a href="//getrakam.com/login" class="nice" style="
+    margin-left: 30px;
+">Login</a><a href="//getrakam.com/signup" class="nice">Sign-up</a>
+</div></div>
+
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -48,7 +63,7 @@ under the License.
       </span>
     </a>
     <div class="tocify-wrapper">
-     <h1 class="text-logo" style="margin: 7px 15px">RAKAM</h1>
+     <!--<h1 class="text-logo" style="margin: 7px 15px">RAKAM</h1>-->
       <% if language_tabs %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
