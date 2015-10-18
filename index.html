@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>API Reference</title>
 
-    <link href="http://buremba.github.io/slate/stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="http://buremba.github.io/slate/stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+    <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <script src="javascripts/all.js" type="text/javascript"></script>
 
@@ -18,7 +18,22 @@
       </script>
   </head>
 
-  <body class="index">
+  <body class="index" style="margin-top:60px">
+  <div class="header" style="
+    position: fixed;
+    top: 0;
+    background: #00bff3;
+    width: 100%;
+    height: 60px;
+    z-index: 100000;
+                           "><div id="logo-large">Rakam</div>
+<div id="top-menu" style="margin:23px">
+  <a href="//getrakam.com/doc">Documentation</a><a href="//getrakam.com/support">Help &amp; Support</a>
+<a href="//getrakam.com/login" class="nice" style="
+    margin-left: 30px;
+">Login</a><a href="//getrakam.com/signup" class="nice">Sign-up</a>
+</div></div>
+
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -26,7 +41,7 @@
       </span>
     </a>
     <div class="tocify-wrapper">
-     <h1 class="text-logo" style="margin: 7px 15px">RAKAM</h1>
+     <!--<h1 class="text-logo" style="margin: 7px 15px">RAKAM</h1>-->
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="java">java</a>
