@@ -34,8 +34,7 @@ under the License.
     <% end %>
   </head>
 
-<<<<<<< HEAD
-  <body class="<%= page_classes %>" style="margin-top:60px">
+  <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
   <div class="header" style="
     position: fixed;
     top: 0;
@@ -50,10 +49,6 @@ under the License.
     margin-left: 30px;
 ">Login</a><a href="//getrakam.com/signup" class="nice">Sign-up</a>
 </div></div>
-
-=======
-  <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
->>>>>>> tripit/master
     <a href="#" id="nav-button">
       <span>
         NAV
