@@ -6,7 +6,7 @@ language_tabs:
   - python
   - php
 toc_footers:
- - <a href='#'>Sign Up for a Developer Key</a>
+ - <a href='#'>Sign Up for a Developer Key (Not ready yet)</a>
 includes:
     - errors
 search: true
@@ -46,7 +46,7 @@ curl "app.getrakam.com/ab-testing/create"
 -X POST -d '{"project" : "str"
 , "name" : "str"
 , "variants" : [
-	"name" : "str", "weight" : 0, "data" : null
+  "name" : "str", "weight" : 0, "data" : null
 ]
 , "goal" : "collection" : "str", "filter" : "str"
 , "options" : null
@@ -238,7 +238,7 @@ $api->abTestingGet(project, id);
 ```json
 {
 "project" : "str", "name" : "str", "variants" : [
-	"name" : "str", "weight" : 0, "data" : null
+  "name" : "str", "weight" : 0, "data" : null
 ], "goal" : "collection" : "str", "filter" : "str", "options" : null, "id" : 0, "collectionName" : "str", "connectorField" : "str"
 }
 ```
@@ -305,8 +305,8 @@ $api->abTestingList(project);
 ```json
 {
 [
-	"project" : "str", "name" : "str", "variants" : [
-	"name" : "str", "weight" : 0, "data" : null
+  "project" : "str", "name" : "str", "variants" : [
+  "name" : "str", "weight" : 0, "data" : null
 ], "goal" : "collection" : "str", "filter" : "str", "options" : null, "id" : 0, "collectionName" : "str", "connectorField" : "str"
 ]
 }
@@ -327,7 +327,7 @@ curl "app.getrakam.com/ab-testing/update"
 -X POST -d '{"project" : "str"
 , "name" : "str"
 , "variants" : [
-	"name" : "str", "weight" : 0, "data" : null
+  "name" : "str", "weight" : 0, "data" : null
 ]
 , "goal" : "collection" : "str", "filter" : "str"
 , "options" : null
@@ -383,7 +383,7 @@ $api->abTestingUpdate(ab_testing_report);
 ```json
 {
 "project" : "str", "name" : "str", "variants" : [
-	"name" : "str", "weight" : 0, "data" : null
+  "name" : "str", "weight" : 0, "data" : null
 ], "goal" : "collection" : "str", "filter" : "str", "options" : null, "id" : 0, "collectionName" : "str", "connectorField" : "str"
 }
 ```
@@ -415,7 +415,7 @@ curl "app.getrakam.com/funnel/analyze"
 -X POST -d '{"project" : "str"
 , "connector_field" : "str"
 , "steps" : [
-	"collection" : "str", "filterExpression" : "str"
+  "collection" : "str", "filterExpression" : "str"
 ]
 , "dimension" : "str"
 , "startDate" : "2015-01-20"
@@ -470,10 +470,10 @@ $api->funnelAnalyzerAnalyze(funnel_query);
 ```json
 {
 "metadata" : [
-	"name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
 ], "result" : [
-	[
-	null
+  [
+  null
 ]
 ], "error" : "message" : "str", "sqlState" : "str", "errorCode" : 0, "errorLine" : 0, "charPositionInLine" : 0, "properties" : {"prop": value}, "failed" : false
 }
@@ -503,9 +503,9 @@ $api->funnelAnalyzerAnalyze(funnel_query);
 curl "app.getrakam.com/realtime/create"
   -H "read_key: myread_key"
 -X POST -d '{"project" : "str", "name" : "str", "aggregation" : "str", "table_name" : "str", "collections" : [
-	"str"
+  "str"
 ], "filter" : "str", "measure" : "str", "dimensions" : [
-	"str"
+  "str"
 ]}'
 ```
 
@@ -643,7 +643,7 @@ $api->realtimeDelete(project, table_name);
 curl "app.getrakam.com/realtime/get"
   -H "read_key: myread_key"
 -X POST -d '{"project" : "str", "table_name" : "str", "filter" : "str", "dimensions" : [
-	"str"
+  "str"
 ], "aggregate" : false, "date_start" : "str", "date_end" : "str"}'
 ```
 
@@ -763,8 +763,8 @@ $api->realtimeList(project);
 ```json
 {
 [
-	"project" : "str", "name" : "str", "query" : "str", "options" : {"prop": value}, "tableName" : "str", "partitionKeys" : [
-	"str"
+  "project" : "str", "name" : "str", "query" : "str", "options" : {"prop": value}, "tableName" : "str", "partitionKeys" : [
+  "str"
 ]
 ]
 }
@@ -844,10 +844,10 @@ $api->retentionAnalyzerExecute(retention_query);
 ```json
 {
 "metadata" : [
-	"name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
 ], "result" : [
-	[
-	null
+  [
+  null
 ]
 ], "error" : "message" : "str", "sqlState" : "str", "errorCode" : 0, "errorLine" : 0, "charPositionInLine" : 0, "properties" : {"prop": value}, "failed" : false
 }
@@ -886,7 +886,7 @@ curl "app.getrakam.com/user/create_segment"
 , "table_name" : "str"
 , "filter_expression" : "str"
 , "event_filters" : [
-	"collection" : "str", "timeframe" : "start" : null, "end" : null, "aggregation" : "field" : "str", "minimum" : 0, "maximum" : 0, "type" : "str", "filterExpression" : "str"
+  "collection" : "str", "timeframe" : "start" : null, "end" : null, "aggregation" : "field" : "str", "minimum" : 0, "maximum" : 0, "type" : "str", "filterExpression" : "str"
 ]
 , "cache_eviction" : "str"
 }'
@@ -1064,7 +1064,7 @@ $api->userGetEvents(project, user, limit, offset);
 ```json
 {
 [
-	"collection" : "str", "properties" : {"prop": value}
+  "collection" : "str", "properties" : {"prop": value}
 ]
 }
 ```
@@ -1272,7 +1272,7 @@ $api->userGetMetadata(project);
 ```json
 {
 "columns" : [
-	"name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
 ], "identifierColumn" : "str"
 }
 ```
@@ -1290,11 +1290,11 @@ $api->userGetMetadata(project);
 curl "app.getrakam.com/user/search"
 -X POST -d '{"project" : "str"
 , "columns" : [
-	"str"
+  "str"
 ]
 , "filter" : "str"
 , "event_filters" : [
-	"collection" : "str", "timeframe" : "start" : null, "end" : null, "aggregation" : "field" : "str", "minimum" : 0, "maximum" : 0, "type" : "str", "filterExpression" : "str"
+  "collection" : "str", "timeframe" : "start" : null, "end" : null, "aggregation" : "field" : "str", "minimum" : 0, "maximum" : 0, "type" : "str", "filterExpression" : "str"
 ]
 , "sorting" : "column" : "str", "order" : "str"
 , "offset" : "str"
@@ -1346,10 +1346,10 @@ $api->userSearchUsers(user_search_users);
 ```json
 {
 "metadata" : [
-	"name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
 ], "result" : [
-	[
-	null
+  [
+  null
 ]
 ], "error" : "message" : "str", "sqlState" : "str", "errorCode" : 0, "errorLine" : 0, "charPositionInLine" : 0, "properties" : {"prop": value}, "failed" : false
 }
@@ -1504,7 +1504,7 @@ curl "app.getrakam.com/user/unset_properties"
 , "api" : "writeKey" : "str", "apiVersion" : "str"
 , "user" : "str"
 , "property" : [
-	"str"
+  "str"
 ]
 }'
 ```
@@ -1625,8 +1625,8 @@ $api->userMailboxGet(project, user, parent, limit, offset);
 ```json
 {
 [
-	[
-	"id" : 0, "content" : "str", "from_user" : null, "to_user" : null, "parentId" : 0, "seen" : false, "time" : 0, "project" : "str"
+  [
+  "id" : 0, "content" : "str", "from_user" : null, "to_user" : null, "parentId" : 0, "seen" : false, "time" : 0, "project" : "str"
 ]
 ]
 }
@@ -1700,7 +1700,7 @@ $api->userMailboxGetConnectedUsers(project);
 ```json
 {
 [
-	{"prop": value}
+  {"prop": value}
 ]
 }
 ```
@@ -1718,7 +1718,7 @@ $api->userMailboxGetConnectedUsers(project);
 curl "app.getrakam.com/user/mailbox/mark_as_read"
   -H "write_key: mywrite_key"
 -X POST -d '{"project" : "str", "user" : "str", "message_ids" : [
-	0
+  0
 ]}'
 ```
 
@@ -1942,7 +1942,7 @@ $api->projectCollections(project);
 ```json
 {
 [
-	"str"
+  "str"
 ]
 }
 ```
@@ -2138,7 +2138,7 @@ $api->projectGetProjects();
 curl "app.getrakam.com/project/schema"
   -H "read_key: myread_key"
 -X POST -d '{"project" : "str", "names" : [
-	"str"
+  "str"
 ]}'
 ```
 
@@ -2188,8 +2188,8 @@ $api->projectSchema(project, names);
 ```json
 {
 [
-	"name" : "str", "fields" : [
-	"name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+  "name" : "str", "fields" : [
+  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
 ]
 ]
 }
@@ -2211,7 +2211,7 @@ curl "app.getrakam.com/project/schema/add"
 -X POST -d '{"project" : "str"
 , "collection" : "str"
 , "fields" : [
-	"name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
 ]
 }'
 ```
@@ -2262,7 +2262,7 @@ $api->projectAddFieldsToSchema(project_add_fields_to_schema);
 ```json
 {
 [
-	"name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
 ]
 }
 ```
@@ -2289,7 +2289,7 @@ curl "app.getrakam.com/event/batch"
 -X POST -d '{"api" : "writeKey" : "str", "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str"
 , "project" : "str"
 , "events" : [
-	"project" : "str", "collection" : "str", "api" : "writeKey" : "str", "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str", "properties" : null
+  "project" : "str", "collection" : "str", "api" : "writeKey" : "str", "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str", "properties" : null
 ]
 }'
 ```
@@ -2477,10 +2477,10 @@ $api->queryExecute(project, query, limit);
 ```json
 {
 "metadata" : [
-	"name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
 ], "result" : [
-	[
-	null
+  [
+  null
 ]
 ], "error" : "message" : "str", "sqlState" : "str", "errorCode" : 0, "errorLine" : 0, "charPositionInLine" : 0, "properties" : {"prop": value}, "failed" : false
 }
@@ -2613,7 +2613,7 @@ $api->queryMetadata(project, query);
 ```json
 {
 [
-	"name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
 ]
 }
 ```
@@ -2878,7 +2878,7 @@ $api->materializedViewListViews(project);
 ```json
 {
 [
-	"project" : "str", "name" : "str", "query" : "str", "tableName" : "str", "updateInterval" : "str", "incrementalField" : "str", "lastUpdate" : null
+  "project" : "str", "name" : "str", "query" : "str", "tableName" : "str", "updateInterval" : "str", "incrementalField" : "str", "lastUpdate" : null
 ]
 }
 ```
@@ -2895,7 +2895,7 @@ $api->materializedViewListViews(project);
 ```shell
 curl "app.getrakam.com/materialized-view/schema"
 -X POST -d '{"project" : "str", "names" : [
-	"str"
+  "str"
 ]}'
 ```
 
@@ -2943,8 +2943,8 @@ $api->materializedViewSchema(project, names);
 ```json
 {
 [
-	"name" : "str", "fields" : [
-	"name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+  "name" : "str", "fields" : [
+  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
 ]
 ]
 }
@@ -3024,7 +3024,7 @@ curl "app.getrakam.com/continuous-query/create"
 , "options" : {"prop": value}
 , "tableName" : "str"
 , "partitionKeys" : [
-	"str"
+  "str"
 ]
 }'
 ```
@@ -3209,7 +3209,7 @@ $api->continuousQueryGet(project, table_name);
 ```json
 {
 "project" : "str", "name" : "str", "query" : "str", "options" : {"prop": value}, "tableName" : "str", "partitionKeys" : [
-	"str"
+  "str"
 ]
 }
 ```
@@ -3276,8 +3276,8 @@ $api->continuousQueryListQueries(project);
 ```json
 {
 [
-	"project" : "str", "name" : "str", "query" : "str", "options" : {"prop": value}, "tableName" : "str", "partitionKeys" : [
-	"str"
+  "project" : "str", "name" : "str", "query" : "str", "options" : {"prop": value}, "tableName" : "str", "partitionKeys" : [
+  "str"
 ]
 ]
 }
@@ -3296,7 +3296,7 @@ $api->continuousQueryListQueries(project);
 curl "app.getrakam.com/continuous-query/schema"
   -H "read_key: myread_key"
 -X POST -d '{"project" : "str", "names" : [
-	"str"
+  "str"
 ]}'
 ```
 
@@ -3346,8 +3346,8 @@ $api->continuousQuerySchema(project, names);
 ```json
 {
 [
-	"name" : "str", "fields" : [
-	"name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+  "name" : "str", "fields" : [
+  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
 ]
 ]
 }
