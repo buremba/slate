@@ -34,6 +34,375 @@ License url: http://www.apache.org/licenses/LICENSE-2.0.html
 Host: app.getrakam.com
 BasePath: /
 
+# Ab testing
+
+
+A/B Testing Module
+
+## Create test
+```shell
+curl "app.getrakam.com/ab-testing/create"
+  -H "master_key: mymaster_key"
+-X POST -d '{"project" : "str"
+, "name" : "str"
+, "variants" : [
+	"name" : "str", "weight" : 0, "data" : null
+]
+, "goal" : "collection" : "str", "filter" : "str"
+, "options" : null
+, "id" : 0
+, "collectionName" : "str"
+, "connectorField" : "str"
+}'
+```
+
+```python
+
+from swagger_client/apis import ApiClient;
+from swagger_client/apis.configuration import Configuration
+import swagger_client/apis as client;
+
+apiClient = client.ApiClient(HOST)
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
+
+api = client.AbtestingApi();
+api.ab_testing_create(ab_testing_report);
+
+
+```
+
+```java
+import io.swagger.client.api.ApiClient;
+import io.swagger.client.api.AbtestingApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+AbtestingApi api = new AbtestingApi();
+api.abTestingCreate(aBTestingReport);
+
+```
+
+```php
+
+
+require_once('/path/to/Swagger\Client\Api');
+
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\AbtestingApi($api_client);
+$api->abTestingCreate(ab_testing_report);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"success" : false, "message" : "str"
+}
+```
+
+### HTTP Request
+`POST /ab-testing/create`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|project|false|string||
+|name|false|string||
+|variants|false|[Variant](#variant) array||
+|goal|false|[Goal](#goal)||
+|options|false|object||
+|id|false|integer (int32)||
+|collectionName|false|string||
+|connectorField|false|string||
+
+
+## Delete report
+```shell
+curl "app.getrakam.com/ab-testing/delete"
+  -H "master_key: mymaster_key"
+-X POST -d '{"project" : "str", "id" : 0}'
+```
+
+```python
+
+from swagger_client/apis import ApiClient;
+from swagger_client/apis.configuration import Configuration
+import swagger_client/apis as client;
+
+apiClient = client.ApiClient(HOST)
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
+
+api = client.AbtestingApi();
+api.ab_testing_delete(project, id);
+
+
+```
+
+```java
+import io.swagger.client.api.ApiClient;
+import io.swagger.client.api.AbtestingApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+AbtestingApi api = new AbtestingApi();
+api.abTestingDelete(project, id);
+
+```
+
+```php
+
+
+require_once('/path/to/Swagger\Client\Api');
+
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\AbtestingApi($api_client);
+$api->abTestingDelete(project, id);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"success" : false, "message" : "str"
+}
+```
+
+### HTTP Request
+`POST /ab-testing/delete`
+### Form Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|project|false|string||
+|id|false|integer (int32)||
+
+
+## Get report
+```shell
+curl "app.getrakam.com/ab-testing/get"
+  -H "read_key: myread_key"
+-X POST -d '{"project" : "str", "id" : 0}'
+```
+
+```python
+
+from swagger_client/apis import ApiClient;
+from swagger_client/apis.configuration import Configuration
+import swagger_client/apis as client;
+
+apiClient = client.ApiClient(HOST)
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
+
+api = client.AbtestingApi();
+api.ab_testing_get(project, id);
+
+
+```
+
+```java
+import io.swagger.client.api.ApiClient;
+import io.swagger.client.api.AbtestingApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+AbtestingApi api = new AbtestingApi();
+api.abTestingGet(project, id);
+
+```
+
+```php
+
+
+require_once('/path/to/Swagger\Client\Api');
+
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+
+$api_client->getConfig().setApiKey("read_key", "myApiKey");
+
+$api = new Swagger\Client\AbtestingApi($api_client);
+$api->abTestingGet(project, id);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"project" : "str", "name" : "str", "variants" : [
+	"name" : "str", "weight" : 0, "data" : null
+], "goal" : "collection" : "str", "filter" : "str", "options" : null, "id" : 0, "collectionName" : "str", "connectorField" : "str"
+}
+```
+
+### HTTP Request
+`POST /ab-testing/get`
+### Form Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|project|false|string||
+|id|false|integer (int32)||
+
+
+## List reports
+```shell
+curl "app.getrakam.com/ab-testing/list"
+  -H "read_key: myread_key"
+-X POST -d '{"project" : "str"}'
+```
+
+```python
+
+from swagger_client/apis import ApiClient;
+from swagger_client/apis.configuration import Configuration
+import swagger_client/apis as client;
+
+apiClient = client.ApiClient(HOST)
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
+
+api = client.AbtestingApi();
+api.ab_testing_list(project);
+
+
+```
+
+```java
+import io.swagger.client.api.ApiClient;
+import io.swagger.client.api.AbtestingApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+AbtestingApi api = new AbtestingApi();
+api.abTestingList(project);
+
+```
+
+```php
+
+
+require_once('/path/to/Swagger\Client\Api');
+
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+
+$api_client->getConfig().setApiKey("read_key", "myApiKey");
+
+$api = new Swagger\Client\AbtestingApi($api_client);
+$api->abTestingList(project);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+[
+	"project" : "str", "name" : "str", "variants" : [
+	"name" : "str", "weight" : 0, "data" : null
+], "goal" : "collection" : "str", "filter" : "str", "options" : null, "id" : 0, "collectionName" : "str", "connectorField" : "str"
+]
+}
+```
+
+### HTTP Request
+`POST /ab-testing/list`
+### Form Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|project|false|string||
+
+
+## Update report
+```shell
+curl "app.getrakam.com/ab-testing/update"
+  -H "master_key: mymaster_key"
+-X POST -d '{"project" : "str"
+, "name" : "str"
+, "variants" : [
+	"name" : "str", "weight" : 0, "data" : null
+]
+, "goal" : "collection" : "str", "filter" : "str"
+, "options" : null
+, "id" : 0
+, "collectionName" : "str"
+, "connectorField" : "str"
+}'
+```
+
+```python
+
+from swagger_client/apis import ApiClient;
+from swagger_client/apis.configuration import Configuration
+import swagger_client/apis as client;
+
+apiClient = client.ApiClient(HOST)
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
+
+api = client.AbtestingApi();
+api.ab_testing_update(ab_testing_report);
+
+
+```
+
+```java
+import io.swagger.client.api.ApiClient;
+import io.swagger.client.api.AbtestingApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+AbtestingApi api = new AbtestingApi();
+api.abTestingUpdate(aBTestingReport);
+
+```
+
+```php
+
+
+require_once('/path/to/Swagger\Client\Api');
+
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\AbtestingApi($api_client);
+$api->abTestingUpdate(ab_testing_report);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"project" : "str", "name" : "str", "variants" : [
+	"name" : "str", "weight" : 0, "data" : null
+], "goal" : "collection" : "str", "filter" : "str", "options" : null, "id" : 0, "collectionName" : "str", "connectorField" : "str"
+}
+```
+
+### HTTP Request
+`POST /ab-testing/update`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|project|false|string||
+|name|false|string||
+|variants|false|[Variant](#variant) array||
+|goal|false|[Goal](#goal)||
+|options|false|object||
+|id|false|integer (int32)||
+|collectionName|false|string||
+|connectorField|false|string||
+
+
 # Funnel
 
 
@@ -3078,6 +3447,21 @@ false
 |descriptiveName||false|string||
 |description||false|string||
 |category||false|string||
+
+
+### Variant
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|name||false|string||
+|weight||false|integer (int32)||
+|data||false|object||
+
+
+### Goal
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|collection||false|string||
+|filter||false|string||
 
 
 ### UserContext
