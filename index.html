@@ -166,13 +166,17 @@ BasePath: /</p>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/funnel/analyze"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{"steps" : [
-    {"collection" : "str"}
-]
-, "dimension" : "str"
-, "startDate" : "2015-01-20"
-, "window" : {"value" : 1, "type" : "str"}
-, "endDate" : "2015-01-20"
+{ \ 
+  "steps" : [ { \ 
+    "collection" : "str" \ 
+  } ], \ 
+  "dimension" : "str", \ 
+  "startDate" : "2015-01-20", \ 
+  "window" : { \ 
+    "value" : 1, \ 
+    "type" : "str" \ 
+  }, \ 
+  "endDate" : "2015-01-20" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -289,18 +293,16 @@ $api-&gt;analyzeFunnel(funnel_query);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/create"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
 -X POST -d <span class="s1">'
-{"name" : "str"
-, "measures" : [
-    {"column" : "str", "aggregation" : "str"}
-]
-, "table_name" : "str"
-, "collections" : [
-    "str"
-]
-, "filter" : "str"
-, "dimensions" : [
-    "str"
-]
+{ \ 
+  "name" : "str", \ 
+  "measures" : [ { \ 
+    "column" : "str", \ 
+    "aggregation" : "str" \ 
+  } ], \ 
+  "table_name" : "str", \ 
+  "collections" : [ "str" ], \ 
+  "filter" : "str", \ 
+  "dimensions" : [ "str" ] \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -403,8 +405,8 @@ $api-&gt;createTable(real_time_report);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/delete"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
 -X POST -d <span class="s1">'
-{
-  "table_name" : "str"
+{ \ 
+  "table_name" : "str" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -477,15 +479,17 @@ $api-&gt;deleteTable(table_name);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/get"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{"table_name" : "str"
-, "filter" : "str"
-, "measure" : {"column" : "str", "aggregation" : "str"}
-, "dimensions" : [
-    "str"
-]
-, "aggregate" : true
-, "date_start" : "2016-03-03T10:15:30.00Z"
-, "date_end" : "2016-03-03T10:15:30.00Z"
+{ \ 
+  "table_name" : "str", \ 
+  "filter" : "str", \ 
+  "measure" : { \ 
+    "column" : "str", \ 
+    "aggregation" : "str" \ 
+  }, \ 
+  "dimensions" : [ "str" ], \ 
+  "aggregate" : true, \ 
+  "date_start" : "2016-03-03T10:15:30.00Z", \ 
+  "date_end" : "2016-03-03T10:15:30.00Z" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -658,13 +662,18 @@ $api-&gt;listTables();
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/retention/analyze"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{"first_action" : {"collection" : "str"}
-, "returning_action" : {"collection" : "str"}
-, "dimension" : "str"
-, "date_unit" : "str"
-, "period" : 1
-, "startDate" : "2015-01-20"
-, "endDate" : "2015-01-20"
+{ \ 
+  "first_action" : { \ 
+    "collection" : "str" \ 
+  }, \ 
+  "returning_action" : { \ 
+    "collection" : "str" \ 
+  }, \ 
+  "dimension" : "str", \ 
+  "date_unit" : "str", \ 
+  "period" : 1, \ 
+  "startDate" : "2015-01-20", \ 
+  "endDate" : "2015-01-20" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -795,9 +804,18 @@ $api-&gt;analyzeRetention(retention_query);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/batch/create"</span>
   -H <span class="s2">"write_key: mywrite_key"</span>
 -X POST -d <span class="s1">'
-{"users" : [
-    {"id" : "object", "api" : {"apiLibrary" : "str", "apiVersion" : "str", "apiKey" : "str"}, "properties" : {"prop": {}}}
-]
+{ \ 
+  "users" : [ { \ 
+    "id" : "object", \ 
+    "api" : { \ 
+      "apiLibrary" : "str", \ 
+      "apiVersion" : "str", \ 
+      "apiKey" : "str" \ 
+    }, \ 
+    "properties" : { \ 
+      "prop" : { } \ 
+    } \ 
+  } ] \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -866,9 +884,16 @@ $api-&gt;createUsers(user_create_users);
 <h2 id="create-new-user">Create new user</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/create"</span>
 -X POST -d <span class="s1">'
-{"id" : "object"
-, "api" : {"apiLibrary" : "str", "apiVersion" : "str", "apiKey" : "str"}
-, "properties" : {"prop": {}}
+{ \ 
+  "id" : "object", \ 
+  "api" : { \ 
+    "apiLibrary" : "str", \ 
+    "apiVersion" : "str", \ 
+    "apiKey" : "str" \ 
+  }, \ 
+  "properties" : { \ 
+    "prop" : { } \ 
+  } \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -926,19 +951,19 @@ $api-&gt;createUser(user);
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>true</td>
+<td>false</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>api</td>
-<td>true</td>
+<td>false</td>
 <td><a href="#usercontext">UserContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>properties</td>
-<td>true</td>
+<td>false</td>
 <td>object</td>
 <td></td>
 </tr>
@@ -948,13 +973,25 @@ $api-&gt;createUser(user);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/create_segment"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{"name" : "str"
-, "table_name" : "str"
-, "filter_expression" : "str"
-, "event_filters" : [
-    {"collection" : "str", "timeframe" : {"start" : "2016-03-03T10:15:30.00Z", "end" : "2016-03-03T10:15:30.00Z"}, "aggregation" : {"field" : "str", "minimum" : 1, "maximum" : 1, "type" : "str"}, "filterExpression" : "str"}
-]
-, "cache_eviction" : "str"
+{ \ 
+  "name" : "str", \ 
+  "table_name" : "str", \ 
+  "filter_expression" : "str", \ 
+  "event_filters" : [ { \ 
+    "collection" : "str", \ 
+    "timeframe" : { \ 
+      "start" : "2016-03-03T10:15:30.00Z", \ 
+      "end" : "2016-03-03T10:15:30.00Z" \ 
+    }, \ 
+    "aggregation" : { \ 
+      "field" : "str", \ 
+      "minimum" : 1, \ 
+      "maximum" : 1, \ 
+      "type" : "str" \ 
+    }, \ 
+    "filterExpression" : "str" \ 
+  } ], \ 
+  "cache_eviction" : "str" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -1051,7 +1088,8 @@ $api-&gt;createSegment(user_create_segment);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/get"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{"user" : "object"
+{ \ 
+  "user" : "object" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -1131,10 +1169,10 @@ $api-&gt;getUser(user_get_user);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/get_events"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{
-  "user" : "str",
-  "limit" : 0,
-  "offset" : "str"
+{ \ 
+  "user" : "str", \ 
+  "limit" : 0, \ 
+  "offset" : "str" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -1221,10 +1259,15 @@ $api-&gt;getEvents(user, limit, offset);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/increment_property"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
 -X POST -d <span class="s1">'
-{"api" : {"apiLibrary" : "str", "apiVersion" : "str", "apiKey" : "str"}
-, "id" : "str"
-, "property" : "str"
-, "value" : 1.0
+{ \ 
+  "api" : { \ 
+    "apiLibrary" : "str", \ 
+    "apiVersion" : "str", \ 
+    "apiKey" : "str" \ 
+  }, \ 
+  "id" : "str", \ 
+  "property" : "str", \ 
+  "value" : 1.0 \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -1315,11 +1358,16 @@ $api-&gt;incrementProperty(user_increment_property);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/merge"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{"user" : "str"
-, "api" : {"apiLibrary" : "str", "apiVersion" : "str", "apiKey" : "str"}
-, "anonymous_id" : "str"
-, "created_at" : "2016-03-03T10:15:30.00Z"
-, "merged_at" : "2016-03-03T10:15:30.00Z"
+{ \ 
+  "user" : "str", \ 
+  "api" : { \ 
+    "apiLibrary" : "str", \ 
+    "apiVersion" : "str", \ 
+    "apiKey" : "str" \ 
+  }, \ 
+  "anonymous_id" : "str", \ 
+  "created_at" : "2016-03-03T10:15:30.00Z", \ 
+  "merged_at" : "2016-03-03T10:15:30.00Z" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -1458,16 +1506,29 @@ $api-&gt;getMetadata();
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/search"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{"columns" : [
-    "str"
-]
-, "filter" : "str"
-, "event_filters" : [
-    {"collection" : "str", "timeframe" : {"start" : "2016-03-03T10:15:30.00Z", "end" : "2016-03-03T10:15:30.00Z"}, "aggregation" : {"field" : "str", "minimum" : 1, "maximum" : 1, "type" : "str"}, "filterExpression" : "str"}
-]
-, "sorting" : {"column" : "str", "order" : "str"}
-, "offset" : "str"
-, "limit" : 1
+{ \ 
+  "columns" : [ "str" ], \ 
+  "filter" : "str", \ 
+  "event_filters" : [ { \ 
+    "collection" : "str", \ 
+    "timeframe" : { \ 
+      "start" : "2016-03-03T10:15:30.00Z", \ 
+      "end" : "2016-03-03T10:15:30.00Z" \ 
+    }, \ 
+    "aggregation" : { \ 
+      "field" : "str", \ 
+      "minimum" : 1, \ 
+      "maximum" : 1, \ 
+      "type" : "str" \ 
+    }, \ 
+    "filterExpression" : "str" \ 
+  } ], \ 
+  "sorting" : { \ 
+    "column" : "str", \ 
+    "order" : "str" \ 
+  }, \ 
+  "offset" : "str", \ 
+  "limit" : 1 \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -1587,9 +1648,16 @@ $api-&gt;searchUsers(user_search_users);
 <h2 id="set-user-properties">Set user properties</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/set_properties"</span>
 -X POST -d <span class="s1">'
-{"id" : "object"
-, "api" : {"apiLibrary" : "str", "apiVersion" : "str", "apiKey" : "str"}
-, "properties" : {"prop": {}}
+{ \ 
+  "id" : "object", \ 
+  "api" : { \ 
+    "apiLibrary" : "str", \ 
+    "apiVersion" : "str", \ 
+    "apiKey" : "str" \ 
+  }, \ 
+  "properties" : { \ 
+    "prop" : { } \ 
+  } \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -1647,19 +1715,19 @@ $api-&gt;setProperties(user);
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>true</td>
+<td>false</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>api</td>
-<td>true</td>
+<td>false</td>
 <td><a href="#usercontext">UserContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>properties</td>
-<td>true</td>
+<td>false</td>
 <td>object</td>
 <td></td>
 </tr>
@@ -1668,9 +1736,16 @@ $api-&gt;setProperties(user);
 <h2 id="set-user-properties-once">Set user properties once</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/set_properties_once"</span>
 -X POST -d <span class="s1">'
-{"id" : "object"
-, "api" : {"apiLibrary" : "str", "apiVersion" : "str", "apiKey" : "str"}
-, "properties" : {"prop": {}}
+{ \ 
+  "id" : "object", \ 
+  "api" : { \ 
+    "apiLibrary" : "str", \ 
+    "apiVersion" : "str", \ 
+    "apiKey" : "str" \ 
+  }, \ 
+  "properties" : { \ 
+    "prop" : { } \ 
+  } \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -1722,19 +1797,19 @@ $api-&gt;setPropertiesOnce(user);
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>true</td>
+<td>false</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>api</td>
-<td>true</td>
+<td>false</td>
 <td><a href="#usercontext">UserContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>properties</td>
-<td>true</td>
+<td>false</td>
 <td>object</td>
 <td></td>
 </tr>
@@ -1743,11 +1818,14 @@ $api-&gt;setPropertiesOnce(user);
 <h2 id="unset-user-property">Unset user property</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/unset_properties"</span>
 -X POST -d <span class="s1">'
-{"api" : {"apiLibrary" : "str", "apiVersion" : "str", "apiKey" : "str"}
-, "id" : "object"
-, "properties" : [
-    "str"
-]
+{ \ 
+  "api" : { \ 
+    "apiLibrary" : "str", \ 
+    "apiVersion" : "str", \ 
+    "apiKey" : "str" \ 
+  }, \ 
+  "id" : "object", \ 
+  "properties" : [ "str" ] \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -1879,8 +1957,8 @@ $api-&gt;getConfigurations();
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/lock_key"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
 -X POST -d <span class="s1">'
-{
-  "lock_key" : "str"
+{ \ 
+  "lock_key" : "str" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -2093,9 +2171,9 @@ $api-&gt;collections();
 <h2 id="create-project">Create project</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/create"</span>
 -X POST -d <span class="s1">'
-{
-  "lock_key" : "str",
-  "name" : "str"
+{ \ 
+  "lock_key" : "str", \ 
+  "name" : "str" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -2381,8 +2459,8 @@ $api-&gt;revokeApiKeys();
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{
-  "names" : [ "str" ]
+{ \ 
+  "names" : [ "str" ] \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -2462,10 +2540,16 @@ $api-&gt;schema(names);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema/add"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
 -X POST -d <span class="s1">'
-{"collection" : "str"
-, "fields" : [
-    {"name" : "str", "type" : "str", "unique" : true, "descriptiveName" : "str", "description" : "str", "category" : "str"}
-]
+{ \ 
+  "collection" : "str", \ 
+  "fields" : [ { \ 
+    "name" : "str", \ 
+    "type" : "str", \ 
+    "unique" : true, \ 
+    "descriptiveName" : "str", \ 
+    "description" : "str", \ 
+    "category" : "str" \ 
+  } ] \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -2548,10 +2632,10 @@ $api-&gt;addFieldsToSchema(project_add_fields_to_schema);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema/add/custom"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
 -X POST -d <span class="s1">'
-{
-  "collection" : "str",
-  "schema_type" : "str",
-  "schema" : "str"
+{ \ 
+  "collection" : "str", \ 
+  "schema_type" : "str", \ 
+  "schema" : "str" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -2639,7 +2723,7 @@ $api-&gt;addCustomFieldsToSchema(collection, schema_type, schema);
 <h2 id="get-project-stats">Get project stats</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/stats"</span>
 -X POST -d <span class="s1">'
-["object"]'</span>
+[ "object" ]'</span>
 </code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
@@ -2711,14 +2795,43 @@ $api-&gt;getStats(project_get_stats);
 <h2 id="collect-multiple-events">Collect multiple events</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/batch"</span>
 -X POST -d <span class="s1">'
-{"api" : {"library" : {"name" : "str", "version" : "str"}, "checksum" : "str", "plugins" : [
-    {"name" : "str", "arguments" : {"prop": {}}}
-], "apiKey" : "str", "apiVersion" : "str", "uploadTime" : 1}
-, "events" : [
-    {"project" : "str", "collection" : "str", "api" : {"library" : {"name" : "str", "version" : "str"}, "checksum" : "str", "plugins" : [
-    {"name" : "str", "arguments" : {"prop": {}}}
-], "apiKey" : "str", "apiVersion" : "str", "uploadTime" : 1}, "properties" : "object"}
-]
+{ \ 
+  "api" : { \ 
+    "api_key" : "str", \ 
+    "library" : { \ 
+      "name" : "str", \ 
+      "version" : "str" \ 
+    }, \ 
+    "api_version" : "str", \ 
+    "upload_time" : 1, \ 
+    "checksum" : "str", \ 
+    "plugins" : [ { \ 
+      "name" : "str", \ 
+      "arguments" : { \ 
+        "prop" : { } \ 
+      } \ 
+    } ] \ 
+  }, \ 
+  "events" : [ { \ 
+    "collection" : "str", \ 
+    "api" : { \ 
+      "api_key" : "str", \ 
+      "library" : { \ 
+        "name" : "str", \ 
+        "version" : "str" \ 
+      }, \ 
+      "api_version" : "str", \ 
+      "upload_time" : 1, \ 
+      "checksum" : "str", \ 
+      "plugins" : [ { \ 
+        "name" : "str", \ 
+        "arguments" : { \ 
+          "prop" : { } \ 
+        } \ 
+      } ] \ 
+    }, \ 
+    "properties" : "object" \ 
+  } ] \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -2793,14 +2906,43 @@ $api-&gt;batchEvents(event_list);
 <h2 id="collect-bulk-events">Collect Bulk events</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk"</span>
 -X POST -d <span class="s1">'
-{"api" : {"library" : {"name" : "str", "version" : "str"}, "checksum" : "str", "plugins" : [
-    {"name" : "str", "arguments" : {"prop": {}}}
-], "apiKey" : "str", "apiVersion" : "str", "uploadTime" : 1}
-, "events" : [
-    {"project" : "str", "collection" : "str", "api" : {"library" : {"name" : "str", "version" : "str"}, "checksum" : "str", "plugins" : [
-    {"name" : "str", "arguments" : {"prop": {}}}
-], "apiKey" : "str", "apiVersion" : "str", "uploadTime" : 1}, "properties" : "object"}
-]
+{ \ 
+  "api" : { \ 
+    "api_key" : "str", \ 
+    "library" : { \ 
+      "name" : "str", \ 
+      "version" : "str" \ 
+    }, \ 
+    "api_version" : "str", \ 
+    "upload_time" : 1, \ 
+    "checksum" : "str", \ 
+    "plugins" : [ { \ 
+      "name" : "str", \ 
+      "arguments" : { \ 
+        "prop" : { } \ 
+      } \ 
+    } ] \ 
+  }, \ 
+  "events" : [ { \ 
+    "collection" : "str", \ 
+    "api" : { \ 
+      "api_key" : "str", \ 
+      "library" : { \ 
+        "name" : "str", \ 
+        "version" : "str" \ 
+      }, \ 
+      "api_version" : "str", \ 
+      "upload_time" : 1, \ 
+      "checksum" : "str", \ 
+      "plugins" : [ { \ 
+        "name" : "str", \ 
+        "arguments" : { \ 
+          "prop" : { } \ 
+        } \ 
+      } ] \ 
+    }, \ 
+    "properties" : "object" \ 
+  } ] \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -2878,14 +3020,43 @@ $api-&gt;bulkEvents(event_list);
 <h2 id="collect-bulk-events-from-remote">Collect bulk events from remote</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk/remote"</span>
 -X POST -d <span class="s1">'
-{"api" : {"library" : {"name" : "str", "version" : "str"}, "checksum" : "str", "plugins" : [
-    {"name" : "str", "arguments" : {"prop": {}}}
-], "apiKey" : "str", "apiVersion" : "str", "uploadTime" : 1}
-, "events" : [
-    {"project" : "str", "collection" : "str", "api" : {"library" : {"name" : "str", "version" : "str"}, "checksum" : "str", "plugins" : [
-    {"name" : "str", "arguments" : {"prop": {}}}
-], "apiKey" : "str", "apiVersion" : "str", "uploadTime" : 1}, "properties" : "object"}
-]
+{ \ 
+  "api" : { \ 
+    "api_key" : "str", \ 
+    "library" : { \ 
+      "name" : "str", \ 
+      "version" : "str" \ 
+    }, \ 
+    "api_version" : "str", \ 
+    "upload_time" : 1, \ 
+    "checksum" : "str", \ 
+    "plugins" : [ { \ 
+      "name" : "str", \ 
+      "arguments" : { \ 
+        "prop" : { } \ 
+      } \ 
+    } ] \ 
+  }, \ 
+  "events" : [ { \ 
+    "collection" : "str", \ 
+    "api" : { \ 
+      "api_key" : "str", \ 
+      "library" : { \ 
+        "name" : "str", \ 
+        "version" : "str" \ 
+      }, \ 
+      "api_version" : "str", \ 
+      "upload_time" : 1, \ 
+      "checksum" : "str", \ 
+      "plugins" : [ { \ 
+        "name" : "str", \ 
+        "arguments" : { \ 
+          "prop" : { } \ 
+        } \ 
+      } ] \ 
+    }, \ 
+    "properties" : "object" \ 
+  } ] \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -2958,12 +3129,25 @@ $api-&gt;bulkEventsRemote(event_list);
 <h2 id="collect-event">Collect event</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/collect"</span>
 -X POST -d <span class="s1">'
-{"project" : "str"
-, "collection" : "str"
-, "api" : {"library" : {"name" : "str", "version" : "str"}, "checksum" : "str", "plugins" : [
-    {"name" : "str", "arguments" : {"prop": {}}}
-], "apiKey" : "str", "apiVersion" : "str", "uploadTime" : 1}
-, "properties" : "object"
+{ \ 
+  "collection" : "str", \ 
+  "api" : { \ 
+    "api_key" : "str", \ 
+    "library" : { \ 
+      "name" : "str", \ 
+      "version" : "str" \ 
+    }, \ 
+    "api_version" : "str", \ 
+    "upload_time" : 1, \ 
+    "checksum" : "str", \ 
+    "plugins" : [ { \ 
+      "name" : "str", \ 
+      "arguments" : { \ 
+        "prop" : { } \ 
+      } \ 
+    } ] \ 
+  }, \ 
+  "properties" : "object" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -3020,12 +3204,6 @@ $api-&gt;collectEvent(event);
 </tr>
 </thead><tbody>
 <tr>
-<td>project</td>
-<td>false</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
 <td>collection</td>
 <td>true</td>
 <td>string</td>
@@ -3053,13 +3231,16 @@ $api-&gt;collectEvent(event);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/create"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
 -X POST -d <span class="s1">'
-{"name" : "str"
-, "query" : "str"
-, "incremental" : true
-, "options" : {"prop": {}}
-, "tableName" : "str"
-, "updateInterval" : "str"
-, "lastUpdate" : "2016-03-03T10:15:30.00Z"
+{ \ 
+  "name" : "str", \ 
+  "query" : "str", \ 
+  "incremental" : true, \ 
+  "options" : { \ 
+    "prop" : { } \ 
+  }, \ 
+  "tableName" : "str", \ 
+  "updateInterval" : "str", \ 
+  "lastUpdate" : "2016-03-03T10:15:30.00Z" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -3168,8 +3349,8 @@ $api-&gt;createView(materialized_view);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/delete"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
 -X POST -d <span class="s1">'
-{
-  "table_name" : "str"
+{ \ 
+  "table_name" : "str" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -3242,8 +3423,8 @@ $api-&gt;deleteView(table_name);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/get"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{
-  "table_name" : "str"
+{ \ 
+  "table_name" : "str" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -3384,8 +3565,8 @@ $api-&gt;listViews();
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/schema"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{
-  "names" : [ "str" ]
+{ \ 
+  "names" : [ "str" ] \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -3514,13 +3695,14 @@ $api-&gt;update();
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/create"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
 -X POST -d <span class="s1">'
-{"name" : "str"
-, "query" : "str"
-, "options" : {"prop": {}}
-, "tableName" : "str"
-, "partitionKeys" : [
-    "str"
-]
+{ \ 
+  "name" : "str", \ 
+  "query" : "str", \ 
+  "options" : { \ 
+    "prop" : { } \ 
+  }, \ 
+  "tableName" : "str", \ 
+  "partitionKeys" : [ "str" ] \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -3617,8 +3799,8 @@ $api-&gt;createQuery(continuous_query);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/delete"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
 -X POST -d <span class="s1">'
-{
-  "table_name" : "str"
+{ \ 
+  "table_name" : "str" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -3691,8 +3873,8 @@ $api-&gt;deleteQuery(table_name);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/get"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{
-  "table_name" : "str"
+{ \ 
+  "table_name" : "str" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -3874,8 +4056,8 @@ $api-&gt;refreshQuery();
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/schema"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{
-  "names" : [ "str" ]
+{ \ 
+  "names" : [ "str" ] \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -3955,8 +4137,8 @@ $api-&gt;getSchemaOfQuery(names);
 <pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/test"</span>
   -H <span class="s2">"read_key: myread_key"</span>
 -X POST -d <span class="s1">'
-{
-  "query" : "str"
+{ \ 
+  "query" : "str" \ 
 }'</span>
 </code></pre>
 <pre class="highlight python"><code>
@@ -4036,10 +4218,31 @@ $api-&gt;testQuery(query);
 </tr>
 </thead><tbody>
 <tr>
+<td>api_key</td>
+<td></td>
+<td>true</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
 <td>library</td>
 <td></td>
 <td>true</td>
 <td><a href="#library">Library</a></td>
+<td></td>
+</tr>
+<tr>
+<td>api_version</td>
+<td></td>
+<td>true</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>upload_time</td>
+<td></td>
+<td>true</td>
+<td>integer (int64)</td>
 <td></td>
 </tr>
 <tr>
@@ -4054,27 +4257,6 @@ $api-&gt;testQuery(query);
 <td></td>
 <td>true</td>
 <td><a href="#mappingplugin">MappingPlugin</a> array</td>
-<td></td>
-</tr>
-<tr>
-<td>apiKey</td>
-<td></td>
-<td>false</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>apiVersion</td>
-<td></td>
-<td>false</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>uploadTime</td>
-<td></td>
-<td>false</td>
-<td>integer (int64)</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -4175,21 +4357,21 @@ $api-&gt;testQuery(query);
 <tr>
 <td>id</td>
 <td></td>
-<td>true</td>
+<td>false</td>
 <td>object</td>
 <td></td>
 </tr>
 <tr>
 <td>api</td>
 <td></td>
-<td>true</td>
+<td>false</td>
 <td><a href="#usercontext">UserContext</a></td>
 <td></td>
 </tr>
 <tr>
 <td>properties</td>
 <td></td>
-<td>true</td>
+<td>false</td>
 <td>object</td>
 <td></td>
 </tr>
@@ -4267,13 +4449,6 @@ $api-&gt;testQuery(query);
 <th>default</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>project</td>
-<td></td>
-<td>false</td>
-<td>string</td>
-<td></td>
-</tr>
 <tr>
 <td>collection</td>
 <td></td>
