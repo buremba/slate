@@ -6,7 +6,7 @@ language_tabs:
   - python
   - php
 toc_footers:
- - <a href='#'>Sign Up for a Developer Key (Not ready yet)</a>
+ - <a href='#'>Sign Up for a Developer Key</a>
 includes:
     - errors
 search: true
@@ -20,7 +20,7 @@ We have language bindings in java, python, php! You can view code examples in th
 An analytics platform API that lets you create your own analytics services.
 
 ### Version
-Version: 0.3
+Version: 0.5
 
 ## Contact Information
 Email: contact@rakam.com
@@ -31,377 +31,8 @@ License: Apache License 2.0
 License url: http://www.apache.org/licenses/LICENSE-2.0.html
 
 ### URI scheme
-Host: app.getrakam.com
+Host: api.rakam.io
 BasePath: /
-
-# Ab testing
-
-
-A/B Testing Module
-
-## Create test
-```shell
-curl "app.getrakam.com/ab-testing/create"
-  -H "master_key: mymaster_key"
--X POST -d '{"project" : "str"
-, "name" : "str"
-, "variants" : [
-  "name" : "str", "weight" : 0, "data" : null
-]
-, "goal" : "collection" : "str", "filter" : "str"
-, "options" : null
-, "id" : 0
-, "collectionName" : "str"
-, "connectorField" : "str"
-}'
-```
-
-```python
-
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
-
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['master_key'] = 'myApiKey'
-
-api = client.AbtestingApi();
-api.ab_testing_create(ab_testing_report);
-
-
-```
-
-```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AbtestingApi;
-
-ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-AbtestingApi api = new AbtestingApi();
-api.abTestingCreate(aBTestingReport);
-
-```
-
-```php
-
-
-require_once('/path/to/Swagger\Client\Api');
-
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
-
-$api_client->getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\AbtestingApi($api_client);
-$api->abTestingCreate(ab_testing_report);
-
-
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-"success" : false, "message" : "str"
-}
-```
-
-### HTTP Request
-`POST /ab-testing/create`
-### Body Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-|name|false|string||
-|variants|false|[Variant](#variant) array||
-|goal|false|[Goal](#goal)||
-|options|false|object||
-|id|false|integer (int32)||
-|collectionName|false|string||
-|connectorField|false|string||
-
-
-## Delete report
-```shell
-curl "app.getrakam.com/ab-testing/delete"
-  -H "master_key: mymaster_key"
--X POST -d '{"project" : "str", "id" : 0}'
-```
-
-```python
-
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
-
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['master_key'] = 'myApiKey'
-
-api = client.AbtestingApi();
-api.ab_testing_delete(project, id);
-
-
-```
-
-```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AbtestingApi;
-
-ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-AbtestingApi api = new AbtestingApi();
-api.abTestingDelete(project, id);
-
-```
-
-```php
-
-
-require_once('/path/to/Swagger\Client\Api');
-
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
-
-$api_client->getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\AbtestingApi($api_client);
-$api->abTestingDelete(project, id);
-
-
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-"success" : false, "message" : "str"
-}
-```
-
-### HTTP Request
-`POST /ab-testing/delete`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-|id|false|integer (int32)||
-
-
-## Get report
-```shell
-curl "app.getrakam.com/ab-testing/get"
-  -H "read_key: myread_key"
--X POST -d '{"project" : "str", "id" : 0}'
-```
-
-```python
-
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
-
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['read_key'] = 'myApiKey'
-
-api = client.AbtestingApi();
-api.ab_testing_get(project, id);
-
-
-```
-
-```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AbtestingApi;
-
-ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-AbtestingApi api = new AbtestingApi();
-api.abTestingGet(project, id);
-
-```
-
-```php
-
-
-require_once('/path/to/Swagger\Client\Api');
-
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
-
-$api_client->getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\AbtestingApi($api_client);
-$api->abTestingGet(project, id);
-
-
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-"project" : "str", "name" : "str", "variants" : [
-  "name" : "str", "weight" : 0, "data" : null
-], "goal" : "collection" : "str", "filter" : "str", "options" : null, "id" : 0, "collectionName" : "str", "connectorField" : "str"
-}
-```
-
-### HTTP Request
-`POST /ab-testing/get`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-|id|false|integer (int32)||
-
-
-## List reports
-```shell
-curl "app.getrakam.com/ab-testing/list"
-  -H "read_key: myread_key"
--X POST -d '{"project" : "str"}'
-```
-
-```python
-
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
-
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['read_key'] = 'myApiKey'
-
-api = client.AbtestingApi();
-api.ab_testing_list(project);
-
-
-```
-
-```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AbtestingApi;
-
-ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-AbtestingApi api = new AbtestingApi();
-api.abTestingList(project);
-
-```
-
-```php
-
-
-require_once('/path/to/Swagger\Client\Api');
-
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
-
-$api_client->getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\AbtestingApi($api_client);
-$api->abTestingList(project);
-
-
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-[
-  "project" : "str", "name" : "str", "variants" : [
-  "name" : "str", "weight" : 0, "data" : null
-], "goal" : "collection" : "str", "filter" : "str", "options" : null, "id" : 0, "collectionName" : "str", "connectorField" : "str"
-]
-}
-```
-
-### HTTP Request
-`POST /ab-testing/list`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-
-
-## Update report
-```shell
-curl "app.getrakam.com/ab-testing/update"
-  -H "master_key: mymaster_key"
--X POST -d '{"project" : "str"
-, "name" : "str"
-, "variants" : [
-  "name" : "str", "weight" : 0, "data" : null
-]
-, "goal" : "collection" : "str", "filter" : "str"
-, "options" : null
-, "id" : 0
-, "collectionName" : "str"
-, "connectorField" : "str"
-}'
-```
-
-```python
-
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
-
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['master_key'] = 'myApiKey'
-
-api = client.AbtestingApi();
-api.ab_testing_update(ab_testing_report);
-
-
-```
-
-```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AbtestingApi;
-
-ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-AbtestingApi api = new AbtestingApi();
-api.abTestingUpdate(aBTestingReport);
-
-```
-
-```php
-
-
-require_once('/path/to/Swagger\Client\Api');
-
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
-
-$api_client->getConfig().setApiKey("master_key", "myApiKey");
-
-$api = new Swagger\Client\AbtestingApi($api_client);
-$api->abTestingUpdate(ab_testing_report);
-
-
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-"project" : "str", "name" : "str", "variants" : [
-  "name" : "str", "weight" : 0, "data" : null
-], "goal" : "collection" : "str", "filter" : "str", "options" : null, "id" : 0, "collectionName" : "str", "connectorField" : "str"
-}
-```
-
-### HTTP Request
-`POST /ab-testing/update`
-### Body Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-|name|false|string||
-|variants|false|[Variant](#variant) array||
-|goal|false|[Goal](#goal)||
-|options|false|object||
-|id|false|integer (int32)||
-|collectionName|false|string||
-|connectorField|false|string||
-
 
 # Funnel
 
@@ -410,57 +41,54 @@ Funnel Analyzer module
 
 ## Execute query
 ```shell
-curl "app.getrakam.com/funnel/analyze"
+curl "api.rakam.io/funnel/analyze"
   -H "read_key: myread_key"
--X POST -d '{"project" : "str"
-, "connector_field" : "str"
-, "steps" : [
-  "collection" : "str", "filterExpression" : "str"
+-X POST -d '{"steps" : [
+	{"collection" : "str"}
 ]
 , "dimension" : "str"
 , "startDate" : "2015-01-20"
+, "window" : {"value" : 0, "type" : "str"}
 , "endDate" : "2015-01-20"
-, "enableOtherGrouping" : false
 }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.FunnelApi();
-api.funnel_analyzer_analyze(funnel_query);
+api.analyze_funnel(funnel_query);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.FunnelApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.FunnelApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-FunnelApi api = new FunnelApi();
-api.funnelAnalyzerAnalyze(funnelQuery);
+FunnelApi api = new FunnelApi(apiClient);
+api.analyzeFunnel(funnelQuery);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\FunnelApi($api_client);
-$api->funnelAnalyzerAnalyze(funnel_query);
+$api->analyzeFunnel(funnel_query);
 
 
 ```
@@ -469,13 +97,26 @@ $api->funnelAnalyzerAnalyze(funnel_query);
 
 ```json
 {
-"metadata" : [
-  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
-], "result" : [
-  [
-  null
-]
-], "error" : "message" : "str", "sqlState" : "str", "errorCode" : 0, "errorLine" : 0, "charPositionInLine" : 0, "properties" : {"prop": value}, "failed" : false
+  "metadata" : [ {
+    "name" : "str",
+    "type" : "str",
+    "unique" : false,
+    "descriptiveName" : "str",
+    "description" : "str",
+    "category" : "str"
+  } ],
+  "result" : [ [ "object" ] ],
+  "error" : {
+    "message" : "str",
+    "sqlState" : "str",
+    "errorCode" : 0,
+    "errorLine" : 0,
+    "charPositionInLine" : 0
+  },
+  "properties" : {
+    "prop" : { }
+  },
+  "failed" : false
 }
 ```
 
@@ -484,13 +125,11 @@ $api->funnelAnalyzerAnalyze(funnel_query);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
-|connector_field|false|string||
 |steps|false|[FunnelStep](#funnelstep) array||
 |dimension|false|string||
 |startDate|false|string (date)||
+|window|false|[FunnelWindow](#funnelwindow)||
 |endDate|false|string (date)||
-|enableOtherGrouping|false|boolean||
 
 
 # Realtime
@@ -500,52 +139,59 @@ $api->funnelAnalyzerAnalyze(funnel_query);
 
 ## Create report
 ```shell
-curl "app.getrakam.com/realtime/create"
-  -H "read_key: myread_key"
--X POST -d '{"project" : "str", "name" : "str", "aggregation" : "str", "table_name" : "str", "collections" : [
-  "str"
-], "filter" : "str", "measure" : "str", "dimensions" : [
-  "str"
-]}'
+curl "api.rakam.io/realtime/create"
+  -H "master_key: mymaster_key"
+-X POST -d '{"name" : "str"
+, "measures" : [
+	{"column" : "str", "aggregation" : "str"}
+]
+, "table_name" : "str"
+, "collections" : [
+	"str"
+]
+, "filter" : "str"
+, "dimensions" : [
+	"str"
+]
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['read_key'] = 'myApiKey'
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.RealtimeApi();
-api.realtime_create(project, name, aggregation, table_name, collections, filter, measure, dimensions);
+api.create_table(real_time_report);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.RealtimeApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.RealtimeApi;
 
 ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-RealtimeApi api = new RealtimeApi();
-api.realtimeCreate(project, name, aggregation, tableName, collections, filter, measure, dimensions);
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+RealtimeApi api = new RealtimeApi(apiClient);
+api.createTable(realTimeReport);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
-$api_client->getConfig().setApiKey("read_key", "myApiKey");
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\RealtimeApi($api_client);
-$api->realtimeCreate(project, name, aggregation, table_name, collections, filter, measure, dimensions);
+$api->createTable(real_time_report);
 
 
 ```
@@ -554,69 +200,69 @@ $api->realtimeCreate(project, name, aggregation, table_name, collections, filter
 
 ```json
 {
-"success" : false, "message" : "str"
+  "success" : false,
+  "message" : "str"
 }
 ```
 
 ### HTTP Request
 `POST /realtime/create`
-### Form Parameters
+### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |name|false|string||
-|aggregation|false|string||
+|measures|false|[Measure](#measure) array||
 |table_name|false|string||
-|collections|false|multi string array||
+|collections|false|string array||
 |filter|false|string||
-|measure|false|string||
-|dimensions|false|multi string array||
+|dimensions|false|string array||
 
 
 ## Delete report
 ```shell
-curl "app.getrakam.com/realtime/delete"
-  -H "read_key: myread_key"
--X POST -d '{"project" : "str", "table_name" : "str"}'
+curl "api.rakam.io/realtime/delete"
+  -H "master_key: mymaster_key"
+-X POST -d '{
+  "table_name" : "str"
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['read_key'] = 'myApiKey'
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.RealtimeApi();
-api.realtime_delete(project, table_name);
+api.delete_table(table_name);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.RealtimeApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.RealtimeApi;
 
 ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-RealtimeApi api = new RealtimeApi();
-api.realtimeDelete(project, tableName);
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+RealtimeApi api = new RealtimeApi(apiClient);
+api.deleteTable(tableName);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
-$api_client->getConfig().setApiKey("read_key", "myApiKey");
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\RealtimeApi($api_client);
-$api->realtimeDelete(project, table_name);
+$api->deleteTable(table_name);
 
 
 ```
@@ -625,7 +271,8 @@ $api->realtimeDelete(project, table_name);
 
 ```json
 {
-"success" : false, "message" : "str"
+  "success" : false,
+  "message" : "str"
 }
 ```
 
@@ -634,56 +281,61 @@ $api->realtimeDelete(project, table_name);
 ### Form Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |table_name|false|string||
 
 
 ## Get report
 ```shell
-curl "app.getrakam.com/realtime/get"
+curl "api.rakam.io/realtime/get"
   -H "read_key: myread_key"
--X POST -d '{"project" : "str", "table_name" : "str", "filter" : "str", "dimensions" : [
-  "str"
-], "aggregate" : false, "date_start" : "str", "date_end" : "str"}'
+-X POST -d '{"table_name" : "str"
+, "filter" : "str"
+, "measure" : {"column" : "str", "aggregation" : "str"}
+, "dimensions" : [
+	"str"
+]
+, "aggregate" : false
+, "date_start" : 
+, "date_end" : 
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.RealtimeApi();
-api.realtime_get(project, table_name, filter, dimensions, aggregate, date_start, date_end);
+api.query_table(realtime_query_table);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.RealtimeApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.RealtimeApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-RealtimeApi api = new RealtimeApi();
-api.realtimeGet(project, tableName, filter, dimensions, aggregate, dateStart, dateEnd);
+RealtimeApi api = new RealtimeApi(apiClient);
+api.queryTable(realtimeQueryTable);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\RealtimeApi($api_client);
-$api->realtimeGet(project, table_name, filter, dimensions, aggregate, date_start, date_end);
+$api->queryTable(realtime_query_table);
 
 
 ```
@@ -692,19 +344,21 @@ $api->realtimeGet(project, table_name, filter, dimensions, aggregate, date_start
 
 ```json
 {
-"start" : 0, "end" : 0, "result" : null
+  "start" : 0,
+  "end" : 0,
+  "result" : "object"
 }
 ```
 
 ### HTTP Request
 `POST /realtime/get`
-### Form Parameters
+### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |table_name|false|string||
 |filter|false|string||
-|dimensions|false|multi string array||
+|measure|false|[Measure](#measure)||
+|dimensions|false|string array||
 |aggregate|false|boolean||
 |date_start|false|string (date-time)||
 |date_end|false|string (date-time)||
@@ -712,48 +366,47 @@ $api->realtimeGet(project, table_name, filter, dimensions, aggregate, date_start
 
 ## List queries
 ```shell
-curl "app.getrakam.com/realtime/list"
+curl "api.rakam.io/realtime/list"
   -H "read_key: myread_key"
--X POST -d '{"project" : "str"}'
+-X POST -d '{ }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.RealtimeApi();
-api.realtime_list(project);
+api.list_tables();
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.RealtimeApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.RealtimeApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-RealtimeApi api = new RealtimeApi();
-api.realtimeList(project);
+RealtimeApi api = new RealtimeApi(apiClient);
+api.listTables();
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\RealtimeApi($api_client);
-$api->realtimeList(project);
+$api->listTables();
 
 
 ```
@@ -761,23 +414,19 @@ $api->realtimeList(project);
 > The above command returns JSON structured like this:
 
 ```json
-{
-[
-  "project" : "str", "name" : "str", "query" : "str", "options" : {"prop": value}, "tableName" : "str", "partitionKeys" : [
-  "str"
-]
-]
-}
+[ {
+  "name" : "str",
+  "query" : "str",
+  "options" : {
+    "prop" : { }
+  },
+  "tableName" : "str",
+  "partitionKeys" : [ "str" ]
+} ]
 ```
 
 ### HTTP Request
 `POST /realtime/list`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-
-
 # Retention
 
 
@@ -785,14 +434,13 @@ Retention Analyzer module
 
 ## Execute query
 ```shell
-curl "app.getrakam.com/retention/analyze"
+curl "api.rakam.io/retention/analyze"
   -H "read_key: myread_key"
--X POST -d '{"project" : "str"
-, "connector_field" : "str"
-, "first_action" : "collection" : "str"
-, "returning_action" : "collection" : "str"
+-X POST -d '{"first_action" : {"collection" : "str"}
+, "returning_action" : {"collection" : "str"}
 , "dimension" : "str"
 , "date_unit" : "str"
+, "period" : 0
 , "startDate" : "2015-01-20"
 , "endDate" : "2015-01-20"
 }'
@@ -800,41 +448,40 @@ curl "app.getrakam.com/retention/analyze"
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.RetentionApi();
-api.retention_analyzer_execute(retention_query);
+api.analyze_retention(retention_query);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.RetentionApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.RetentionApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-RetentionApi api = new RetentionApi();
-api.retentionAnalyzerExecute(retentionQuery);
+RetentionApi api = new RetentionApi(apiClient);
+api.analyzeRetention(retentionQuery);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\RetentionApi($api_client);
-$api->retentionAnalyzerExecute(retention_query);
+$api->analyzeRetention(retention_query);
 
 
 ```
@@ -843,13 +490,26 @@ $api->retentionAnalyzerExecute(retention_query);
 
 ```json
 {
-"metadata" : [
-  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
-], "result" : [
-  [
-  null
-]
-], "error" : "message" : "str", "sqlState" : "str", "errorCode" : 0, "errorLine" : 0, "charPositionInLine" : 0, "properties" : {"prop": value}, "failed" : false
+  "metadata" : [ {
+    "name" : "str",
+    "type" : "str",
+    "unique" : false,
+    "descriptiveName" : "str",
+    "description" : "str",
+    "category" : "str"
+  } ],
+  "result" : [ [ "object" ] ],
+  "error" : {
+    "message" : "str",
+    "sqlState" : "str",
+    "errorCode" : 0,
+    "errorLine" : 0,
+    "charPositionInLine" : 0
+  },
+  "properties" : {
+    "prop" : { }
+  },
+  "failed" : false
 }
 ```
 
@@ -858,35 +518,156 @@ $api->retentionAnalyzerExecute(retention_query);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
-|connector_field|false|string||
 |first_action|false|[RetentionAction](#retentionaction)||
 |returning_action|false|[RetentionAction](#retentionaction)||
 |dimension|false|string||
 |date_unit|false|enum (DAY, WEEK, MONTH)||
+|period|false|integer (int32)||
 |startDate|false|string (date)||
 |endDate|false|string (date)||
 
-
-# Event stream
-
-
-Event Stream Module
 
 # User
 
 
 User module for Rakam
 
+## Create new users
+```shell
+curl "api.rakam.io/user/batch/create"
+  -H "write_key: mywrite_key"
+-X POST -d '{"users" : [
+	{"id" : "object", "api" : {"apiKey" : "str", "apiLibrary" : "str", "apiVersion" : "str"}, "properties" : {"prop": {}}}
+]
+}'
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['write_key'] = 'myApiKey'
+
+api = client.UserApi();
+api.create_users(user_create_users);
+
+
+```
+
+```java
+import org.rakam.client.ApiClient;
+import org.rakam.client.UserApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("write_key").setApiKey("myApiKey");
+UserApi api = new UserApi(apiClient);
+api.createUsers(userCreateUsers);
+
+```
+
+```php
+
+
+require_once('/path/to/org.rakam.client');
+
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
+
+$api_client->getConfig().setApiKey("write_key", "myApiKey");
+
+$api = new Swagger\Client\UserApi($api_client);
+$api->createUsers(user_create_users);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[ "object" ]
+```
+
+### HTTP Request
+`POST /user/batch/create`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|users|false|[User](#user) array||
+
+
+## Create new user
+```shell
+curl "api.rakam.io/user/create"
+-X POST -d '{"id" : "object"
+, "api" : {"apiKey" : "str", "apiLibrary" : "str", "apiVersion" : "str"}
+, "properties" : {"prop": {}}
+}'
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("api.rakam.io")
+
+api = client.UserApi();
+api.create_user(user);
+
+
+```
+
+```java
+import org.rakam.client.ApiClient;
+import org.rakam.client.UserApi;
+
+ApiClient apiClient = new ApiClient();
+
+UserApi api = new UserApi(apiClient);
+api.createUser(user);
+
+```
+
+```php
+
+
+require_once('/path/to/org.rakam.client');
+
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
+
+
+$api = new Swagger\Client\UserApi($api_client);
+$api->createUser(user);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+"object"
+```
+
+### HTTP Request
+`POST /user/create`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|id|true|object||
+|api|true|[UserContext](#usercontext)||
+|properties|true|object||
+
+
 ## Get events of the user
 ```shell
-curl "app.getrakam.com/user/create_segment"
--X POST -d '{"project" : "str"
-, "name" : "str"
+curl "api.rakam.io/user/create_segment"
+  -H "read_key: myread_key"
+-X POST -d '{"name" : "str"
 , "table_name" : "str"
 , "filter_expression" : "str"
 , "event_filters" : [
-  "collection" : "str", "timeframe" : "start" : null, "end" : null, "aggregation" : "field" : "str", "minimum" : 0, "maximum" : 0, "type" : "str", "filterExpression" : "str"
+	{"collection" : "str", "timeframe" : {"start" : , "end" : }, "aggregation" : {"field" : "str", "minimum" : 0, "maximum" : 0, "type" : "str"}, "filterExpression" : "str"}
 ]
 , "cache_eviction" : "str"
 }'
@@ -894,39 +675,40 @@ curl "app.getrakam.com/user/create_segment"
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.UserApi();
-api.user_create_segment(user_create_segment);
+api.create_segment(user_create_segment);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UserApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.UserApi;
 
 ApiClient apiClient = new ApiClient();
-
-UserApi api = new UserApi();
-api.userCreateSegment(userCreateSegment);
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+UserApi api = new UserApi(apiClient);
+api.createSegment(userCreateSegment);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
+$api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\UserApi($api_client);
-$api->userCreateSegment(user_create_segment);
+$api->createSegment(user_create_segment);
 
 
 ```
@@ -935,7 +717,8 @@ $api->userCreateSegment(user_create_segment);
 
 ```json
 {
-"success" : false, "message" : "str"
+  "success" : false,
+  "message" : "str"
 }
 ```
 
@@ -944,7 +727,6 @@ $api->userCreateSegment(user_create_segment);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |name|false|string||
 |table_name|false|string||
 |filter_expression|false|string||
@@ -954,45 +736,48 @@ $api->userCreateSegment(user_create_segment);
 
 ## Get user
 ```shell
-curl "app.getrakam.com/user/get"
--X POST -d '{"project" : "str", "user" : "str"}'
+curl "api.rakam.io/user/get"
+  -H "read_key: myread_key"
+-X POST -d '{"user" : "object"
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.UserApi();
-api.user_get_user(project, user);
+api.get_user(user_get_user);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UserApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.UserApi;
 
 ApiClient apiClient = new ApiClient();
-
-UserApi api = new UserApi();
-api.userGetUser(project, user);
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+UserApi api = new UserApi(apiClient);
+api.getUser(userGetUser);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
+$api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\UserApi($api_client);
-$api->userGetUser(project, user);
+$api->getUser(user_get_user);
 
 
 ```
@@ -1001,60 +786,73 @@ $api->userGetUser(project, user);
 
 ```json
 {
-"project" : "str", "id" : "str", "api" : "writeKey" : "str", "apiVersion" : "str", "properties" : {"prop": value}
+  "id" : "object",
+  "api" : {
+    "apiKey" : "str",
+    "apiLibrary" : "str",
+    "apiVersion" : "str"
+  },
+  "properties" : {
+    "prop" : { }
+  }
 }
 ```
 
 ### HTTP Request
 `POST /user/get`
-### Form Parameters
+### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
-|user|false|string||
+|user|false|object||
 
 
 ## Get events of the user
 ```shell
-curl "app.getrakam.com/user/get_events"
--X POST -d '{"project" : "str", "user" : "str", "limit" : 0, "offset" : "str"}'
+curl "api.rakam.io/user/get_events"
+  -H "read_key: myread_key"
+-X POST -d '{
+  "user" : "str",
+  "limit" : 0,
+  "offset" : "str"
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.UserApi();
-api.user_get_events(project, user, limit, offset);
+api.get_events(user, limit, offset);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UserApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.UserApi;
 
 ApiClient apiClient = new ApiClient();
-
-UserApi api = new UserApi();
-api.userGetEvents(project, user, limit, offset);
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+UserApi api = new UserApi(apiClient);
+api.getEvents(user, limit, offset);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
+$api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\UserApi($api_client);
-$api->userGetEvents(project, user, limit, offset);
+$api->getEvents(user, limit, offset);
 
 
 ```
@@ -1062,11 +860,12 @@ $api->userGetEvents(project, user, limit, offset);
 > The above command returns JSON structured like this:
 
 ```json
-{
-[
-  "collection" : "str", "properties" : {"prop": value}
-]
-}
+[ {
+  "collection" : "str",
+  "properties" : {
+    "prop" : { }
+  }
+} ]
 ```
 
 ### HTTP Request
@@ -1074,7 +873,6 @@ $api->userGetEvents(project, user, limit, offset);
 ### Form Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |user|false|string||
 |limit|false|integer (int32)||
 |offset|false|string (date-time)||
@@ -1082,50 +880,51 @@ $api->userGetEvents(project, user, limit, offset);
 
 ## Set user property
 ```shell
-curl "app.getrakam.com/user/increment_property"
--X POST -d '{"project" : "str"
-, "api" : "writeKey" : "str", "apiVersion" : "str"
-, "user" : "str"
+curl "api.rakam.io/user/increment_property"
+  -H "master_key: mymaster_key"
+-X POST -d '{"api" : {"apiKey" : "str", "apiLibrary" : "str", "apiVersion" : "str"}
+, "id" : "str"
 , "property" : "str"
-, "" : 0.0
+, "value" : 0.0
 }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.UserApi();
-api.user_increment_property(user_increment_property);
+api.increment_property(user_increment_property);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UserApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.UserApi;
 
 ApiClient apiClient = new ApiClient();
-
-UserApi api = new UserApi();
-api.userIncrementProperty(userIncrementProperty);
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+UserApi api = new UserApi(apiClient);
+api.incrementProperty(userIncrementProperty);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\UserApi($api_client);
-$api->userIncrementProperty(user_increment_property);
+$api->incrementProperty(user_increment_property);
 
 
 ```
@@ -1134,7 +933,8 @@ $api->userIncrementProperty(user_increment_property);
 
 ```json
 {
-"success" : false, "message" : "str"
+  "success" : false,
+  "message" : "str"
 }
 ```
 
@@ -1143,60 +943,60 @@ $api->userIncrementProperty(user_increment_property);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |api|false|[UserContext](#usercontext)||
-|user|false|string||
+|id|false|string||
 |property|false|string||
-||false|number (double)||
+|value|false|number (double)||
 
 
 ## Merge user with anonymous id
 ```shell
-curl "app.getrakam.com/user/merge"
--X POST -d '{"project" : "str"
-, "user" : "str"
-, "api" : "writeKey" : "str", "apiVersion" : "str"
+curl "api.rakam.io/user/merge"
+  -H "read_key: myread_key"
+-X POST -d '{"user" : "str"
+, "api" : {"apiKey" : "str", "apiLibrary" : "str", "apiVersion" : "str"}
 , "anonymous_id" : "str"
-, "created_at" : null
-, "merged_at" : null
+, "created_at" : 
+, "merged_at" : 
 }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.UserApi();
-api.user_merge_user(user_merge_user);
+api.merge_user(user_merge_user);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UserApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.UserApi;
 
 ApiClient apiClient = new ApiClient();
-
-UserApi api = new UserApi();
-api.userMergeUser(userMergeUser);
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+UserApi api = new UserApi(apiClient);
+api.mergeUser(userMergeUser);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
+$api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\UserApi($api_client);
-$api->userMergeUser(user_merge_user);
+$api->mergeUser(user_merge_user);
 
 
 ```
@@ -1204,9 +1004,7 @@ $api->userMergeUser(user_merge_user);
 > The above command returns JSON structured like this:
 
 ```json
-{
 false
-}
 ```
 
 ### HTTP Request
@@ -1214,7 +1012,6 @@ false
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |user|false|string||
 |api|false|[UserContext](#usercontext)||
 |anonymous_id|false|string||
@@ -1224,79 +1021,65 @@ false
 
 ## Get user storage metadata
 ```shell
-curl "app.getrakam.com/user/metadata"
--X POST -d '{"project" : "str"}'
+curl "api.rakam.io/user/metadata"
+  -H "read_key: myread_key"
+-X POST -d '{ }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.UserApi();
-api.user_get_metadata(project);
+api.get_metadata();
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UserApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.UserApi;
 
 ApiClient apiClient = new ApiClient();
-
-UserApi api = new UserApi();
-api.userGetMetadata(project);
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+UserApi api = new UserApi(apiClient);
+api.getMetadata();
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
+$api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\UserApi($api_client);
-$api->userGetMetadata(project);
+$api->getMetadata();
 
 
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-"columns" : [
-  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
-], "identifierColumn" : "str"
-}
 ```
 
 ### HTTP Request
-`POST /user/metadata`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-
-
+`GET /user/metadata`
 ## Search users
 ```shell
-curl "app.getrakam.com/user/search"
--X POST -d '{"project" : "str"
-, "columns" : [
-  "str"
+curl "api.rakam.io/user/search"
+  -H "read_key: myread_key"
+-X POST -d '{"columns" : [
+	"str"
 ]
 , "filter" : "str"
 , "event_filters" : [
-  "collection" : "str", "timeframe" : "start" : null, "end" : null, "aggregation" : "field" : "str", "minimum" : 0, "maximum" : 0, "type" : "str", "filterExpression" : "str"
+	{"collection" : "str", "timeframe" : {"start" : , "end" : }, "aggregation" : {"field" : "str", "minimum" : 0, "maximum" : 0, "type" : "str"}, "filterExpression" : "str"}
 ]
-, "sorting" : "column" : "str", "order" : "str"
+, "sorting" : {"column" : "str", "order" : "str"}
 , "offset" : "str"
 , "limit" : 0
 }'
@@ -1304,39 +1087,40 @@ curl "app.getrakam.com/user/search"
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.UserApi();
-api.user_search_users(user_search_users);
+api.search_users(user_search_users);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UserApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.UserApi;
 
 ApiClient apiClient = new ApiClient();
-
-UserApi api = new UserApi();
-api.userSearchUsers(userSearchUsers);
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+UserApi api = new UserApi(apiClient);
+api.searchUsers(userSearchUsers);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
+$api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\UserApi($api_client);
-$api->userSearchUsers(user_search_users);
+$api->searchUsers(user_search_users);
 
 
 ```
@@ -1345,13 +1129,26 @@ $api->userSearchUsers(user_search_users);
 
 ```json
 {
-"metadata" : [
-  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
-], "result" : [
-  [
-  null
-]
-], "error" : "message" : "str", "sqlState" : "str", "errorCode" : 0, "errorLine" : 0, "charPositionInLine" : 0, "properties" : {"prop": value}, "failed" : false
+  "metadata" : [ {
+    "name" : "str",
+    "type" : "str",
+    "unique" : false,
+    "descriptiveName" : "str",
+    "description" : "str",
+    "category" : "str"
+  } ],
+  "result" : [ [ "object" ] ],
+  "error" : {
+    "message" : "str",
+    "sqlState" : "str",
+    "errorCode" : 0,
+    "errorLine" : 0,
+    "charPositionInLine" : 0
+  },
+  "properties" : {
+    "prop" : { }
+  },
+  "failed" : false
 }
 ```
 
@@ -1360,7 +1157,6 @@ $api->userSearchUsers(user_search_users);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |columns|false|string array||
 |filter|false|string||
 |event_filters|false|[EventFilter](#eventfilter) array||
@@ -1371,49 +1167,47 @@ $api->userSearchUsers(user_search_users);
 
 ## Set user properties
 ```shell
-curl "app.getrakam.com/user/set_properties"
--X POST -d '{"project" : "str"
-, "user" : "str"
-, "api" : "writeKey" : "str", "apiVersion" : "str"
-, "properties" : {"prop": value}
+curl "api.rakam.io/user/set_properties"
+-X POST -d '{"id" : "object"
+, "api" : {"apiKey" : "str", "apiLibrary" : "str", "apiVersion" : "str"}
+, "properties" : {"prop": {}}
 }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 
 api = client.UserApi();
-api.user_set_properties(set_user_properties);
+api.set_properties(user);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UserApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.UserApi;
 
 ApiClient apiClient = new ApiClient();
 
-UserApi api = new UserApi();
-api.userSetProperties(setUserProperties);
+UserApi api = new UserApi(apiClient);
+api.setProperties(user);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 
 $api = new Swagger\Client\UserApi($api_client);
-$api->userSetProperties(set_user_properties);
+$api->setProperties(user);
 
 
 ```
@@ -1421,9 +1215,7 @@ $api->userSetProperties(set_user_properties);
 > The above command returns JSON structured like this:
 
 ```json
-{
 0
-}
 ```
 
 ### HTTP Request
@@ -1431,57 +1223,54 @@ $api->userSetProperties(set_user_properties);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
-|user|false|string||
-|api|false|[UserContext](#usercontext)||
-|properties|false|object||
+|id|true|object||
+|api|true|[UserContext](#usercontext)||
+|properties|true|object||
 
 
 ## Set user properties once
 ```shell
-curl "app.getrakam.com/user/set_properties_once"
--X POST -d '{"project" : "str"
-, "user" : "str"
-, "api" : "writeKey" : "str", "apiVersion" : "str"
-, "properties" : {"prop": value}
+curl "api.rakam.io/user/set_properties_once"
+-X POST -d '{"id" : "object"
+, "api" : {"apiKey" : "str", "apiLibrary" : "str", "apiVersion" : "str"}
+, "properties" : {"prop": {}}
 }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 
 api = client.UserApi();
-api.user_set_properties_once(set_user_properties);
+api.set_properties_once(user);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UserApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.UserApi;
 
 ApiClient apiClient = new ApiClient();
 
-UserApi api = new UserApi();
-api.userSetPropertiesOnce(setUserProperties);
+UserApi api = new UserApi(apiClient);
+api.setPropertiesOnce(user);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 
 $api = new Swagger\Client\UserApi($api_client);
-$api->userSetPropertiesOnce(set_user_properties);
+$api->setPropertiesOnce(user);
 
 
 ```
@@ -1491,59 +1280,56 @@ $api->userSetPropertiesOnce(set_user_properties);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
-|user|false|string||
-|api|false|[UserContext](#usercontext)||
-|properties|false|object||
+|id|true|object||
+|api|true|[UserContext](#usercontext)||
+|properties|true|object||
 
 
 ## Unset user property
 ```shell
-curl "app.getrakam.com/user/unset_properties"
--X POST -d '{"project" : "str"
-, "api" : "writeKey" : "str", "apiVersion" : "str"
-, "user" : "str"
-, "property" : [
-  "str"
+curl "api.rakam.io/user/unset_properties"
+-X POST -d '{"api" : {"apiKey" : "str", "apiLibrary" : "str", "apiVersion" : "str"}
+, "id" : "object"
+, "properties" : [
+	"str"
 ]
 }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 
 api = client.UserApi();
-api.user_unset_property(user_unset_property);
+api.unset_property(user_unset_property);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UserApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.UserApi;
 
 ApiClient apiClient = new ApiClient();
 
-UserApi api = new UserApi();
-api.userUnsetProperty(userUnsetProperty);
+UserApi api = new UserApi(apiClient);
+api.unsetProperty(userUnsetProperty);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 
 $api = new Swagger\Client\UserApi($api_client);
-$api->userUnsetProperty(user_unset_property);
+$api->unsetProperty(user_unset_property);
 
 
 ```
@@ -1552,7 +1338,8 @@ $api->userUnsetProperty(user_unset_property);
 
 ```json
 {
-"success" : false, "message" : "str"
+  "success" : false,
+  "message" : "str"
 }
 ```
 
@@ -1561,228 +1348,10 @@ $api->userUnsetProperty(user_unset_property);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |api|false|[UserContext](#usercontext)||
-|user|false|string||
-|property|false|string array||
+|id|false|object||
+|properties|false|string array||
 
-
-# User mailbox
-
-
-
-
-## Get user mailbox
-```shell
-curl "app.getrakam.com/user/mailbox/get"
-  -H "read_key: myread_key"
--X POST -d '{"project" : "str", "user" : "str", "parent" : 0, "limit" : 0, "offset" : 0}'
-```
-
-```python
-
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
-
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['read_key'] = 'myApiKey'
-
-api = client.UsermailboxApi();
-api.user_mailbox_get(project, user, parent, limit, offset);
-
-
-```
-
-```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UsermailboxApi;
-
-ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-UsermailboxApi api = new UsermailboxApi();
-api.userMailboxGet(project, user, parent, limit, offset);
-
-```
-
-```php
-
-
-require_once('/path/to/Swagger\Client\Api');
-
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
-
-$api_client->getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\UsermailboxApi($api_client);
-$api->userMailboxGet(project, user, parent, limit, offset);
-
-
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-[
-  [
-  "id" : 0, "content" : "str", "from_user" : null, "to_user" : null, "parentId" : 0, "seen" : false, "time" : 0, "project" : "str"
-]
-]
-}
-```
-
-### HTTP Request
-`POST /user/mailbox/get`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-|user|false|string||
-|parent|false|integer (int32)||
-|limit|false|integer (int32)||
-|offset|false|integer (int64)||
-
-
-
-Returns the last mails sent to the user
-
-## Get connected users
-```shell
-curl "app.getrakam.com/user/mailbox/get_online_users"
-  -H "read_key: myread_key"
--X POST -d '{"project" : "str"}'
-```
-
-```python
-
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
-
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['read_key'] = 'myApiKey'
-
-api = client.UsermailboxApi();
-api.user_mailbox_get_connected_users(project);
-
-
-```
-
-```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UsermailboxApi;
-
-ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-UsermailboxApi api = new UsermailboxApi();
-api.userMailboxGetConnectedUsers(project);
-
-```
-
-```php
-
-
-require_once('/path/to/Swagger\Client\Api');
-
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
-
-$api_client->getConfig().setApiKey("read_key", "myApiKey");
-
-$api = new Swagger\Client\UsermailboxApi($api_client);
-$api->userMailboxGetConnectedUsers(project);
-
-
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-[
-  {"prop": value}
-]
-}
-```
-
-### HTTP Request
-`POST /user/mailbox/get_online_users`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-
-
-## Mark mail as read
-```shell
-curl "app.getrakam.com/user/mailbox/mark_as_read"
-  -H "write_key: mywrite_key"
--X POST -d '{"project" : "str", "user" : "str", "message_ids" : [
-  0
-]}'
-```
-
-```python
-
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
-
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['write_key'] = 'myApiKey'
-
-api = client.UsermailboxApi();
-api.user_mailbox_mark_as_read(project, user, message_ids);
-
-
-```
-
-```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.UsermailboxApi;
-
-ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("write_key").setApiKey("myApiKey");
-UsermailboxApi api = new UsermailboxApi();
-api.userMailboxMarkAsRead(project, user, messageIds);
-
-```
-
-```php
-
-
-require_once('/path/to/Swagger\Client\Api');
-
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
-
-$api_client->getConfig().setApiKey("write_key", "myApiKey");
-
-$api = new Swagger\Client\UsermailboxApi($api_client);
-$api->userMailboxMarkAsRead(project, user, message_ids);
-
-
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-"success" : false, "message" : "str"
-}
-```
-
-### HTTP Request
-`POST /user/mailbox/mark_as_read`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-|user|false|string||
-|message_ids|false|multi integer (int32) array||
-
-
-
-Marks the specified mails as read.
 
 # Admin
 
@@ -1791,48 +1360,162 @@ System related actions
 
 ## List installed modules
 ```shell
-curl "app.getrakam.com/admin/modules"
+curl "api.rakam.io/admin/configurations"
   -H "master_key: mymaster_key"
--X POST -d '{}'
+-X POST -d '{ }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.admin_get_modules();
+api.get_configurations();
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AdminApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-AdminApi api = new AdminApi();
-api.adminGetModules();
+AdminApi api = new AdminApi(apiClient);
+api.getConfigurations();
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->adminGetModules();
+$api->getConfigurations();
+
+
+```
+
+### HTTP Request
+`GET /admin/configurations`
+## Check lock key
+```shell
+curl "api.rakam.io/admin/lock_key"
+  -H "master_key: mymaster_key"
+-X POST -d '{
+  "lock_key" : "str"
+}'
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
+
+api = client.AdminApi();
+api.check_lock_key(lock_key);
+
+
+```
+
+```java
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+AdminApi api = new AdminApi(apiClient);
+api.checkLockKey(lockKey);
+
+```
+
+```php
+
+
+require_once('/path/to/org.rakam.client');
+
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
+
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\AdminApi($api_client);
+$api->checkLockKey(lock_key);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success" : false,
+  "message" : "str"
+}
+```
+
+### HTTP Request
+`POST /admin/lock_key`
+### Form Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|lock_key|false|string||
+
+
+## List installed modules for ui
+```shell
+curl "api.rakam.io/admin/modules"
+  -H "master_key: mymaster_key"
+-X POST -d '{ }'
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
+
+api = client.AdminApi();
+api.modules();
+
+
+```
+
+```java
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+AdminApi api = new AdminApi(apiClient);
+api.modules();
+
+```
+
+```php
+
+
+require_once('/path/to/org.rakam.client');
+
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
+
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\AdminApi($api_client);
+$api->modules();
 
 
 ```
@@ -1841,48 +1524,47 @@ $api->adminGetModules();
 `GET /admin/modules`
 ## Get types
 ```shell
-curl "app.getrakam.com/admin/types"
+curl "api.rakam.io/admin/types"
   -H "master_key: mymaster_key"
--X POST -d '{}'
+-X POST -d '{ }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.admin_get_types();
+api.get_types();
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AdminApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-AdminApi api = new AdminApi();
-api.adminGetTypes();
+AdminApi api = new AdminApi(apiClient);
+api.getTypes();
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->adminGetTypes();
+$api->getTypes();
 
 
 ```
@@ -1891,48 +1573,47 @@ $api->adminGetTypes();
 `GET /admin/types`
 ## Get collection names
 ```shell
-curl "app.getrakam.com/project/collection"
+curl "api.rakam.io/project/collection"
   -H "read_key: myread_key"
--X POST -d '{"project" : "str"}'
+-X POST -d '{ }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.project_collections(project);
+api.collections();
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AdminApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-AdminApi api = new AdminApi();
-api.projectCollections(project);
+AdminApi api = new AdminApi(apiClient);
+api.collections();
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->projectCollections(project);
+$api->collections();
 
 
 ```
@@ -1940,65 +1621,54 @@ $api->projectCollections(project);
 > The above command returns JSON structured like this:
 
 ```json
-{
-[
-  "str"
-]
-}
+[ "str" ]
 ```
 
 ### HTTP Request
 `POST /project/collection`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-
-
 ## Create project
 ```shell
-curl "app.getrakam.com/project/create"
-  -H "master_key: mymaster_key"
--X POST -d '{"name" : "str"}'
+curl "api.rakam.io/project/create"
+-X POST -d '{
+  "lock_key" : "str",
+  "name" : "str"
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['master_key'] = 'myApiKey'
+apiClient = client.ApiClient("api.rakam.io")
 
 api = client.AdminApi();
-api.project_create_project(name);
+api.create_project(lock_key, name);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AdminApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
 
 ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-AdminApi api = new AdminApi();
-api.projectCreateProject(name);
+
+AdminApi api = new AdminApi(apiClient);
+api.createProject(lockKey, name);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
-$api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->projectCreateProject(name);
+$api->createProject(lock_key, name);
 
 
 ```
@@ -2007,7 +1677,9 @@ $api->projectCreateProject(name);
 
 ```json
 {
-"success" : false, "message" : "str"
+  "masterKey" : "str",
+  "readKey" : "str",
+  "writeKey" : "str"
 }
 ```
 
@@ -2016,53 +1688,53 @@ $api->projectCreateProject(name);
 ### Form Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
+|lock_key|false|string||
 |name|false|string||
 
 
-## Delete project
+## Create API Keys
 ```shell
-curl "app.getrakam.com/project/delete"
+curl "api.rakam.io/project/create-api-keys"
   -H "master_key: mymaster_key"
--X POST -d '{"name" : "str"}'
+-X POST -d '{ }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.project_delete_project(name);
+api.create_api_keys();
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AdminApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-AdminApi api = new AdminApi();
-api.projectDeleteProject(name);
+AdminApi api = new AdminApi(apiClient);
+api.createApiKeys();
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->projectDeleteProject(name);
+$api->createApiKeys();
 
 
 ```
@@ -2071,114 +1743,164 @@ $api->projectDeleteProject(name);
 
 ```json
 {
-"success" : false, "message" : "str"
+  "masterKey" : "str",
+  "readKey" : "str",
+  "writeKey" : "str"
 }
 ```
 
 ### HTTP Request
-`POST /project/delete`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|name|false|string||
-
-
-## List created projects
+`POST /project/create-api-keys`
+## Delete project
 ```shell
-curl "app.getrakam.com/project/list"
-  -H "read_key: myread_key"
--X POST -d '{}'
+curl "api.rakam.io/project/delete"
+  -H "master_key: mymaster_key"
+-X POST -d '{ }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['read_key'] = 'myApiKey'
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.project_get_projects();
+api.delete_project();
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AdminApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
 
 ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-AdminApi api = new AdminApi();
-api.projectGetProjects();
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+AdminApi api = new AdminApi(apiClient);
+api.deleteProject();
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
+
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\AdminApi($api_client);
+$api->deleteProject();
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success" : false,
+  "message" : "str"
+}
+```
+
+### HTTP Request
+`POST /project/delete`
+## List created projects
+```shell
+curl "api.rakam.io/project/list"
+  -H "read_key: myread_key"
+-X POST -d '{ }'
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
+
+api = client.AdminApi();
+api.get_projects();
+
+
+```
+
+```java
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+AdminApi api = new AdminApi(apiClient);
+api.getProjects();
+
+```
+
+```php
+
+
+require_once('/path/to/org.rakam.client');
+
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->projectGetProjects();
+$api->getProjects();
 
 
 ```
 
 ### HTTP Request
 `GET /project/list`
-## Get collection schema
+## Revoke API Keys
 ```shell
-curl "app.getrakam.com/project/schema"
-  -H "read_key: myread_key"
--X POST -d '{"project" : "str", "names" : [
-  "str"
-]}'
+curl "api.rakam.io/project/revoke-api-keys"
+  -H "master_key: mymaster_key"
+-X POST -d '{ }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['read_key'] = 'myApiKey'
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.project_schema(project, names);
+api.revoke_api_keys();
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AdminApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
 
 ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-AdminApi api = new AdminApi();
-api.projectSchema(project, names);
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+AdminApi api = new AdminApi(apiClient);
+api.revokeApiKeys();
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
-$api_client->getConfig().setApiKey("read_key", "myApiKey");
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->projectSchema(project, names);
+$api->revokeApiKeys();
 
 
 ```
@@ -2187,12 +1909,76 @@ $api->projectSchema(project, names);
 
 ```json
 {
-[
-  "name" : "str", "fields" : [
-  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
-]
-]
+  "success" : false,
+  "message" : "str"
 }
+```
+
+### HTTP Request
+`POST /project/revoke-api-keys`
+## Get collection schema
+```shell
+curl "api.rakam.io/project/schema"
+  -H "read_key: myread_key"
+-X POST -d '{
+  "names" : [ "str" ]
+}'
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
+
+api = client.AdminApi();
+api.schema(names);
+
+
+```
+
+```java
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+AdminApi api = new AdminApi(apiClient);
+api.schema(names);
+
+```
+
+```php
+
+
+require_once('/path/to/org.rakam.client');
+
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
+
+$api_client->getConfig().setApiKey("read_key", "myApiKey");
+
+$api = new Swagger\Client\AdminApi($api_client);
+$api->schema(names);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[ {
+  "name" : "str",
+  "fields" : [ {
+    "name" : "str",
+    "type" : "str",
+    "unique" : false,
+    "descriptiveName" : "str",
+    "description" : "str",
+    "category" : "str"
+  } ]
+} ]
 ```
 
 ### HTTP Request
@@ -2200,59 +1986,196 @@ $api->projectSchema(project, names);
 ### Form Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |names|false|multi string array||
 
 
 ## Add fields to collections
 ```shell
-curl "app.getrakam.com/project/schema/add"
+curl "api.rakam.io/project/schema/add"
   -H "master_key: mymaster_key"
--X POST -d '{"project" : "str"
-, "collection" : "str"
+-X POST -d '{"collection" : "str"
 , "fields" : [
-  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
+	{"name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"}
 ]
 }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.AdminApi();
-api.project_add_fields_to_schema(project_add_fields_to_schema);
+api.add_fields_to_schema(project_add_fields_to_schema);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.AdminApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-AdminApi api = new AdminApi();
-api.projectAddFieldsToSchema(projectAddFieldsToSchema);
+AdminApi api = new AdminApi(apiClient);
+api.addFieldsToSchema(projectAddFieldsToSchema);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\AdminApi($api_client);
-$api->projectAddFieldsToSchema(project_add_fields_to_schema);
+$api->addFieldsToSchema(project_add_fields_to_schema);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[ {
+  "name" : "str",
+  "type" : "str",
+  "unique" : false,
+  "descriptiveName" : "str",
+  "description" : "str",
+  "category" : "str"
+} ]
+```
+
+### HTTP Request
+`POST /project/schema/add`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|collection|false|string||
+|fields|false|[SchemaField](#schemafield) array||
+
+
+## Add fields to collections by transforming other schemas
+```shell
+curl "api.rakam.io/project/schema/add/custom"
+  -H "master_key: mymaster_key"
+-X POST -d '{
+  "collection" : "str",
+  "schema_type" : "str",
+  "schema" : "str"
+}'
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
+
+api = client.AdminApi();
+api.add_custom_fields_to_schema(collection, schema_type, schema);
+
+
+```
+
+```java
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+AdminApi api = new AdminApi(apiClient);
+api.addCustomFieldsToSchema(collection, schemaType, schema);
+
+```
+
+```php
+
+
+require_once('/path/to/org.rakam.client');
+
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
+
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\AdminApi($api_client);
+$api->addCustomFieldsToSchema(collection, schema_type, schema);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[ {
+  "name" : "str",
+  "type" : "str",
+  "unique" : false,
+  "descriptiveName" : "str",
+  "description" : "str",
+  "category" : "str"
+} ]
+```
+
+### HTTP Request
+`POST /project/schema/add/custom`
+### Form Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|collection|false|string||
+|schema_type|false|string||
+|schema|false|string||
+
+
+## Get project stats
+```shell
+curl "api.rakam.io/project/stats"
+-X POST -d '["object"]'
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("api.rakam.io")
+
+api = client.AdminApi();
+api.get_stats(project_get_stats);
+
+
+```
+
+```java
+import org.rakam.client.ApiClient;
+import org.rakam.client.AdminApi;
+
+ApiClient apiClient = new ApiClient();
+
+AdminApi api = new AdminApi(apiClient);
+api.getStats(projectGetStats);
+
+```
+
+```php
+
+
+require_once('/path/to/org.rakam.client');
+
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
+
+
+$api = new Swagger\Client\AdminApi($api_client);
+$api->getStats(project_get_stats);
 
 
 ```
@@ -2261,20 +2184,16 @@ $api->projectAddFieldsToSchema(project_add_fields_to_schema);
 
 ```json
 {
-[
-  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
-]
+  "prop" : { }
 }
 ```
 
 ### HTTP Request
-`POST /project/schema/add`
+`POST /project/stats`
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
-|collection|false|string||
-|fields|false|[SchemaField](#schemafield) array||
+|array|false|object||
 
 
 # Event
@@ -2284,53 +2203,55 @@ Event Analyzer
 
 ## Collect multiple events
 ```shell
-curl "app.getrakam.com/event/batch"
+curl "api.rakam.io/event/batch"
   -H "write_key: mywrite_key"
--X POST -d '{"api" : "writeKey" : "str", "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str"
-, "project" : "str"
+-X POST -d '{"api" : {"apiKey" : "str", "library" : {"name" : "str", "version" : "str"}, "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str", "plugins" : [
+	{"name" : "str", "arguments" : {"prop": {}}}
+]}
 , "events" : [
-  "project" : "str", "collection" : "str", "api" : "writeKey" : "str", "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str", "properties" : null
+	{"project" : "str", "collection" : "str", "api" : {"apiKey" : "str", "library" : {"name" : "str", "version" : "str"}, "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str", "plugins" : [
+	{"name" : "str", "arguments" : {"prop": {}}}
+]}, "properties" : "object"}
 ]
 }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['write_key'] = 'myApiKey'
 
 api = client.EventApi();
-api.collect_event_batch_events(event_list);
+api.batch_events(event_list);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.EventApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.EventApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("write_key").setApiKey("myApiKey");
-EventApi api = new EventApi();
-api.collectEventBatchEvents(eventList);
+EventApi api = new EventApi(apiClient);
+api.batchEvents(eventList);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("write_key", "myApiKey");
 
 $api = new Swagger\Client\EventApi($api_client);
-$api->collectEventBatchEvents(event_list);
+$api->batchEvents(event_list);
 
 
 ```
@@ -2338,9 +2259,7 @@ $api->collectEventBatchEvents(event_list);
 > The above command returns JSON structured like this:
 
 ```json
-{
 0
-}
 ```
 
 ### HTTP Request
@@ -2349,58 +2268,63 @@ $api->collectEventBatchEvents(event_list);
 |Parameter|Required|Type|Description|
 |----|----|----|----|
 |api|false|[EventContext](#eventcontext)||
-|project|false|string||
 |events|false|[Event](#event) array||
 
 
-## Collect event
+
+Returns 1 if the events are collected.
+
+## Send Bulk events
 ```shell
-curl "app.getrakam.com/event/collect"
-  -H "write_key: mywrite_key"
--X POST -d '{"project" : "str"
-, "collection" : "str"
-, "api" : "writeKey" : "str", "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str"
-, "properties" : null
+curl "api.rakam.io/event/bulk"
+  -H "master_key: mymaster_key"
+-X POST -d '{"api" : {"apiKey" : "str", "library" : {"name" : "str", "version" : "str"}, "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str", "plugins" : [
+	{"name" : "str", "arguments" : {"prop": {}}}
+]}
+, "events" : [
+	{"project" : "str", "collection" : "str", "api" : {"apiKey" : "str", "library" : {"name" : "str", "version" : "str"}, "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str", "plugins" : [
+	{"name" : "str", "arguments" : {"prop": {}}}
+]}, "properties" : "object"}
+]
 }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['write_key'] = 'myApiKey'
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.EventApi();
-api.collect_event_collect_event(event);
+api.bulk_events(event_list);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.EventApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.EventApi;
 
 ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("write_key").setApiKey("myApiKey");
-EventApi api = new EventApi();
-api.collectEventCollectEvent(event);
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+EventApi api = new EventApi(apiClient);
+api.bulkEvents(eventList);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
-$api_client->getConfig().setApiKey("write_key", "myApiKey");
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\EventApi($api_client);
-$api->collectEventCollectEvent(event);
+$api->bulkEvents(event_list);
 
 
 ```
@@ -2408,9 +2332,145 @@ $api->collectEventCollectEvent(event);
 > The above command returns JSON structured like this:
 
 ```json
-{
 0
-}
+```
+
+### HTTP Request
+`POST /event/bulk`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|api|false|[EventContext](#eventcontext)||
+|events|false|[Event](#event) array||
+
+
+## Send Bulk events
+```shell
+curl "api.rakam.io/event/bulk/remote"
+  -H "master_key: mymaster_key"
+-X POST -d '{"api" : {"apiKey" : "str", "library" : {"name" : "str", "version" : "str"}, "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str", "plugins" : [
+	{"name" : "str", "arguments" : {"prop": {}}}
+]}
+, "events" : [
+	{"project" : "str", "collection" : "str", "api" : {"apiKey" : "str", "library" : {"name" : "str", "version" : "str"}, "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str", "plugins" : [
+	{"name" : "str", "arguments" : {"prop": {}}}
+]}, "properties" : "object"}
+]
+}'
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
+
+api = client.EventApi();
+api.bulk_events_remote(event_list);
+
+
+```
+
+```java
+import org.rakam.client.ApiClient;
+import org.rakam.client.EventApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+EventApi api = new EventApi(apiClient);
+api.bulkEventsRemote(eventList);
+
+```
+
+```php
+
+
+require_once('/path/to/org.rakam.client');
+
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
+
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\EventApi($api_client);
+$api->bulkEventsRemote(event_list);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+0
+```
+
+### HTTP Request
+`POST /event/bulk/remote`
+### Body Parameters
+|Parameter|Required|Type|Description|
+|----|----|----|----|
+|api|false|[EventContext](#eventcontext)||
+|events|false|[Event](#event) array||
+
+
+## Collect event
+```shell
+curl "api.rakam.io/event/collect"
+  -H "write_key: mywrite_key"
+-X POST -d '{"project" : "str"
+, "collection" : "str"
+, "api" : {"apiKey" : "str", "library" : {"name" : "str", "version" : "str"}, "apiVersion" : "str", "uploadTime" : 0, "checksum" : "str", "plugins" : [
+	{"name" : "str", "arguments" : {"prop": {}}}
+]}
+, "properties" : "object"
+}'
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['write_key'] = 'myApiKey'
+
+api = client.EventApi();
+api.collect_event(event);
+
+
+```
+
+```java
+import org.rakam.client.ApiClient;
+import org.rakam.client.EventApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("write_key").setApiKey("myApiKey");
+EventApi api = new EventApi(apiClient);
+api.collectEvent(event);
+
+```
+
+```php
+
+
+require_once('/path/to/org.rakam.client');
+
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
+
+$api_client->getConfig().setApiKey("write_key", "myApiKey");
+
+$api = new Swagger\Client\EventApi($api_client);
+$api->collectEvent(event);
+
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+0
 ```
 
 ### HTTP Request
@@ -2419,55 +2479,57 @@ $api->collectEventCollectEvent(event);
 |Parameter|Required|Type|Description|
 |----|----|----|----|
 |project|false|string||
-|collection|false|string||
-|api|false|[EventContext](#eventcontext)||
-|properties|false|object||
+|collection|true|string||
+|api|true|[EventContext](#eventcontext)||
+|properties|true|object||
 
 
 ## Analyze events
 ```shell
-curl "app.getrakam.com/query/execute"
+curl "api.rakam.io/query/execute"
   -H "read_key: myread_key"
--X POST -d '{"project" : "str", "query" : "str", "limit" : 0}'
+-X POST -d '{
+  "query" : "str",
+  "limit" : 0
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.EventApi();
-api.query_execute(project, query, limit);
+api.execute(query, limit);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.EventApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.EventApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-EventApi api = new EventApi();
-api.queryExecute(project, query, limit);
+EventApi api = new EventApi(apiClient);
+api.execute(query, limit);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\EventApi($api_client);
-$api->queryExecute(project, query, limit);
+$api->execute(query, limit);
 
 
 ```
@@ -2476,13 +2538,26 @@ $api->queryExecute(project, query, limit);
 
 ```json
 {
-"metadata" : [
-  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
-], "result" : [
-  [
-  null
-]
-], "error" : "message" : "str", "sqlState" : "str", "errorCode" : 0, "errorLine" : 0, "charPositionInLine" : 0, "properties" : {"prop": value}, "failed" : false
+  "metadata" : [ {
+    "name" : "str",
+    "type" : "str",
+    "unique" : false,
+    "descriptiveName" : "str",
+    "description" : "str",
+    "category" : "str"
+  } ],
+  "result" : [ [ "object" ] ],
+  "error" : {
+    "message" : "str",
+    "sqlState" : "str",
+    "errorCode" : 0,
+    "errorLine" : 0,
+    "charPositionInLine" : 0
+  },
+  "properties" : {
+    "prop" : { }
+  },
+  "failed" : false
 }
 ```
 
@@ -2491,55 +2566,55 @@ $api->queryExecute(project, query, limit);
 ### Form Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |query|false|string||
 |limit|false|integer (int32)||
 
 
 ## Explain query
 ```shell
-curl "app.getrakam.com/query/explain"
+curl "api.rakam.io/query/explain"
   -H "read_key: myread_key"
--X POST -d '{"query" : "str"}'
+-X POST -d '{
+  "query" : "str"
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.EventApi();
-api.query_explain(query);
+api.explain(query);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.EventApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.EventApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-EventApi api = new EventApi();
-api.queryExplain(query);
+EventApi api = new EventApi(apiClient);
+api.explain(query);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\EventApi($api_client);
-$api->queryExplain(query);
+$api->explain(query);
 
 
 ```
@@ -2547,9 +2622,7 @@ $api->queryExplain(query);
 > The above command returns JSON structured like this:
 
 ```json
-{
-null
-}
+"object"
 ```
 
 ### HTTP Request
@@ -2562,48 +2635,49 @@ null
 
 ## Test query
 ```shell
-curl "app.getrakam.com/query/metadata"
+curl "api.rakam.io/query/metadata"
   -H "read_key: myread_key"
--X POST -d '{"project" : "str", "query" : "str"}'
+-X POST -d '{
+  "query" : "str"
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.EventApi();
-api.query_metadata(project, query);
+api.metadata(query);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.EventApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.EventApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-EventApi api = new EventApi();
-api.queryMetadata(project, query);
+EventApi api = new EventApi(apiClient);
+api.metadata(query);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\EventApi($api_client);
-$api->queryMetadata(project, query);
+$api->metadata(query);
 
 
 ```
@@ -2611,11 +2685,14 @@ $api->queryMetadata(project, query);
 > The above command returns JSON structured like this:
 
 ```json
-{
-[
-  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
-]
-}
+[ {
+  "name" : "str",
+  "type" : "str",
+  "unique" : false,
+  "descriptiveName" : "str",
+  "description" : "str",
+  "category" : "str"
+} ]
 ```
 
 ### HTTP Request
@@ -2623,7 +2700,6 @@ $api->queryMetadata(project, query);
 ### Form Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |query|false|string||
 
 
@@ -2634,48 +2710,54 @@ Materialized view
 
 ## Create view
 ```shell
-curl "app.getrakam.com/materialized-view/create"
+curl "api.rakam.io/materialized-view/create"
   -H "master_key: mymaster_key"
--X POST -d '{"project" : "str", "name" : "str", "table_name" : "str", "query" : "str", "update_interval" : "str", "incremental_field" : "str"}'
+-X POST -d '{"name" : "str"
+, "query" : "str"
+, "incremental" : false
+, "options" : {"prop": {}}
+, "tableName" : "str"
+, "updateInterval" : "str"
+, "lastUpdate" : 
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.MaterializedviewApi();
-api.materialized_view_create(project, name, table_name, query, update_interval, incremental_field);
+api.create_view(materialized_view);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.MaterializedviewApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.MaterializedviewApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-MaterializedviewApi api = new MaterializedviewApi();
-api.materializedViewCreate(project, name, tableName, query, updateInterval, incrementalField);
+MaterializedviewApi api = new MaterializedviewApi(apiClient);
+api.createView(materializedView);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\MaterializedviewApi($api_client);
-$api->materializedViewCreate(project, name, table_name, query, update_interval, incremental_field);
+$api->createView(materialized_view);
 
 
 ```
@@ -2684,67 +2766,70 @@ $api->materializedViewCreate(project, name, table_name, query, update_interval, 
 
 ```json
 {
-"success" : false, "message" : "str"
+  "success" : false,
+  "message" : "str"
 }
 ```
 
 ### HTTP Request
 `POST /materialized-view/create`
-### Form Parameters
+### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
-|name|false|string||
-|table_name|false|string||
-|query|false|string||
-|update_interval|false|string||
-|incremental_field|false|string||
+|name|true|string||
+|query|true|string||
+|incremental|false|boolean||
+|options|false|object||
+|tableName|false|string||
+|updateInterval|false|string||
+|lastUpdate|false|string (date-time)||
 
 
 ## Delete materialized view
 ```shell
-curl "app.getrakam.com/materialized-view/delete"
+curl "api.rakam.io/materialized-view/delete"
   -H "master_key: mymaster_key"
--X POST -d '{"project" : "str", "name" : "str"}'
+-X POST -d '{
+  "table_name" : "str"
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.MaterializedviewApi();
-api.materialized_view_delete(project, name);
+api.delete_view(table_name);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.MaterializedviewApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.MaterializedviewApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-MaterializedviewApi api = new MaterializedviewApi();
-api.materializedViewDelete(project, name);
+MaterializedviewApi api = new MaterializedviewApi(apiClient);
+api.deleteView(tableName);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\MaterializedviewApi($api_client);
-$api->materializedViewDelete(project, name);
+$api->deleteView(table_name);
 
 
 ```
@@ -2753,7 +2838,8 @@ $api->materializedViewDelete(project, name);
 
 ```json
 {
-"success" : false, "message" : "str"
+  "success" : false,
+  "message" : "str"
 }
 ```
 
@@ -2762,178 +2848,154 @@ $api->materializedViewDelete(project, name);
 ### Form Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
-|name|false|string||
+|table_name|false|string||
 
 
 ## Get view
 ```shell
-curl "app.getrakam.com/materialized-view/get"
--X POST -d '{"project" : "str", "table_name" : "str"}'
+curl "api.rakam.io/materialized-view/get"
+  -H "read_key: myread_key"
+-X POST -d '{
+  "table_name" : "str"
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.MaterializedviewApi();
-api.materialized_view_get(project, table_name);
+api.get_view(table_name);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.MaterializedviewApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.MaterializedviewApi;
 
 ApiClient apiClient = new ApiClient();
-
-MaterializedviewApi api = new MaterializedviewApi();
-api.materializedViewGet(project, tableName);
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+MaterializedviewApi api = new MaterializedviewApi(apiClient);
+api.getView(tableName);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
+$api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\MaterializedviewApi($api_client);
-$api->materializedViewGet(project, table_name);
+$api->getView(table_name);
 
 
 ```
 
 > The above command returns JSON structured like this:
-
-```json
-{
-"project" : "str", "name" : "str", "query" : "str", "tableName" : "str", "updateInterval" : "str", "incrementalField" : "str", "lastUpdate" : null
-}
-```
-
-### HTTP Request
-`POST /materialized-view/get`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-|table_name|false|string||
-
 
 ## List views
 ```shell
-curl "app.getrakam.com/materialized-view/list"
--X POST -d '{"project" : "str"}'
+curl "api.rakam.io/materialized-view/list"
+  -H "read_key: myread_key"
+-X POST -d '{ }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.MaterializedviewApi();
-api.materialized_view_list_views(project);
+api.list_views();
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.MaterializedviewApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.MaterializedviewApi;
 
 ApiClient apiClient = new ApiClient();
-
-MaterializedviewApi api = new MaterializedviewApi();
-api.materializedViewListViews(project);
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+MaterializedviewApi api = new MaterializedviewApi(apiClient);
+api.listViews();
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
+$api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\MaterializedviewApi($api_client);
-$api->materializedViewListViews(project);
+$api->listViews();
 
 
 ```
 
 > The above command returns JSON structured like this:
-
-```json
-{
-[
-  "project" : "str", "name" : "str", "query" : "str", "tableName" : "str", "updateInterval" : "str", "incrementalField" : "str", "lastUpdate" : null
-]
-}
-```
-
-### HTTP Request
-`POST /materialized-view/list`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-
 
 ## Get schemas
 ```shell
-curl "app.getrakam.com/materialized-view/schema"
--X POST -d '{"project" : "str", "names" : [
-  "str"
-]}'
+curl "api.rakam.io/materialized-view/schema"
+  -H "read_key: myread_key"
+-X POST -d '{
+  "names" : [ "str" ]
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.MaterializedviewApi();
-api.materialized_view_schema(project, names);
+api.get_schema_of_view(names);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.MaterializedviewApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.MaterializedviewApi;
 
 ApiClient apiClient = new ApiClient();
-
-MaterializedviewApi api = new MaterializedviewApi();
-api.materializedViewSchema(project, names);
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+MaterializedviewApi api = new MaterializedviewApi(apiClient);
+api.getSchemaOfView(names);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
+$api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\MaterializedviewApi($api_client);
-$api->materializedViewSchema(project, names);
+$api->getSchemaOfView(names);
 
 
 ```
@@ -2941,13 +3003,17 @@ $api->materializedViewSchema(project, names);
 > The above command returns JSON structured like this:
 
 ```json
-{
-[
-  "name" : "str", "fields" : [
-  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
-]
-]
-}
+[ {
+  "name" : "str",
+  "fields" : [ {
+    "name" : "str",
+    "type" : "str",
+    "unique" : false,
+    "descriptiveName" : "str",
+    "description" : "str",
+    "category" : "str"
+  } ]
+} ]
 ```
 
 ### HTTP Request
@@ -2955,54 +3021,52 @@ $api->materializedViewSchema(project, names);
 ### Form Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |names|false|multi string array||
 
 
 ## Update view
 ```shell
-curl "app.getrakam.com/materialized-view/update"
+curl "api.rakam.io/materialized-view/update"
   -H "master_key: mymaster_key"
--X POST -d '{}'
+-X POST -d '{ }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.MaterializedviewApi();
-api.materialized_view_update();
+api.update();
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.MaterializedviewApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.MaterializedviewApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-MaterializedviewApi api = new MaterializedviewApi();
-api.materializedViewUpdate();
+MaterializedviewApi api = new MaterializedviewApi(apiClient);
+api.update();
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\MaterializedviewApi($api_client);
-$api->materializedViewUpdate();
+$api->update();
 
 
 ```
@@ -3016,56 +3080,54 @@ Continuous query
 
 ## Create stream
 ```shell
-curl "app.getrakam.com/continuous-query/create"
+curl "api.rakam.io/continuous-query/create"
   -H "master_key: mymaster_key"
--X POST -d '{"project" : "str"
-, "name" : "str"
+-X POST -d '{"name" : "str"
 , "query" : "str"
-, "options" : {"prop": value}
+, "options" : {"prop": {}}
 , "tableName" : "str"
 , "partitionKeys" : [
-  "str"
+	"str"
 ]
 }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.ContinuousqueryApi();
-api.continuous_query_create(continuous_query);
+api.create_query(continuous_query);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.ContinuousqueryApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.ContinuousqueryApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-ContinuousqueryApi api = new ContinuousqueryApi();
-api.continuousQueryCreate(continuousQuery);
+ContinuousqueryApi api = new ContinuousqueryApi(apiClient);
+api.createQuery(continuousQuery);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api->continuousQueryCreate(continuous_query);
+$api->createQuery(continuous_query);
 
 
 ```
@@ -3074,7 +3136,8 @@ $api->continuousQueryCreate(continuous_query);
 
 ```json
 {
-"success" : false, "message" : "str"
+  "success" : false,
+  "message" : "str"
 }
 ```
 
@@ -3083,9 +3146,8 @@ $api->continuousQueryCreate(continuous_query);
 ### Body Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
-|name|false|string||
-|query|false|string||
+|name|true|string||
+|query|true|string||
 |options|false|object||
 |tableName|false|string||
 |partitionKeys|false|string array||
@@ -3093,48 +3155,49 @@ $api->continuousQueryCreate(continuous_query);
 
 ## Delete stream
 ```shell
-curl "app.getrakam.com/continuous-query/delete"
+curl "api.rakam.io/continuous-query/delete"
   -H "master_key: mymaster_key"
--X POST -d '{"project" : "str", "name" : "str"}'
+-X POST -d '{
+  "table_name" : "str"
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.ContinuousqueryApi();
-api.continuous_query_delete(project, name);
+api.delete_query(table_name);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.ContinuousqueryApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.ContinuousqueryApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("master_key").setApiKey("myApiKey");
-ContinuousqueryApi api = new ContinuousqueryApi();
-api.continuousQueryDelete(project, name);
+ContinuousqueryApi api = new ContinuousqueryApi(apiClient);
+api.deleteQuery(tableName);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("master_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api->continuousQueryDelete(project, name);
+$api->deleteQuery(table_name);
 
 
 ```
@@ -3143,7 +3206,8 @@ $api->continuousQueryDelete(project, name);
 
 ```json
 {
-"success" : false, "message" : "str"
+  "success" : false,
+  "message" : "str"
 }
 ```
 
@@ -3152,54 +3216,54 @@ $api->continuousQueryDelete(project, name);
 ### Form Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
-|name|false|string||
+|table_name|false|string||
 
 
 ## Get continuous query
 ```shell
-curl "app.getrakam.com/continuous-query/get"
+curl "api.rakam.io/continuous-query/get"
   -H "read_key: myread_key"
--X POST -d '{"project" : "str", "table_name" : "str"}'
+-X POST -d '{
+  "table_name" : "str"
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.ContinuousqueryApi();
-api.continuous_query_get(project, table_name);
+api.get_query(table_name);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.ContinuousqueryApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.ContinuousqueryApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-ContinuousqueryApi api = new ContinuousqueryApi();
-api.continuousQueryGet(project, tableName);
+ContinuousqueryApi api = new ContinuousqueryApi(apiClient);
+api.getQuery(tableName);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api->continuousQueryGet(project, table_name);
+$api->getQuery(table_name);
 
 
 ```
@@ -3208,9 +3272,13 @@ $api->continuousQueryGet(project, table_name);
 
 ```json
 {
-"project" : "str", "name" : "str", "query" : "str", "options" : {"prop": value}, "tableName" : "str", "partitionKeys" : [
-  "str"
-]
+  "name" : "str",
+  "query" : "str",
+  "options" : {
+    "prop" : { }
+  },
+  "tableName" : "str",
+  "partitionKeys" : [ "str" ]
 }
 ```
 
@@ -3219,54 +3287,52 @@ $api->continuousQueryGet(project, table_name);
 ### Form Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |table_name|false|string||
 
 
 ## List queries
 ```shell
-curl "app.getrakam.com/continuous-query/list"
+curl "api.rakam.io/continuous-query/list"
   -H "read_key: myread_key"
--X POST -d '{"project" : "str"}'
+-X POST -d '{ }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.ContinuousqueryApi();
-api.continuous_query_list_queries(project);
+api.list_queries();
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.ContinuousqueryApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.ContinuousqueryApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-ContinuousqueryApi api = new ContinuousqueryApi();
-api.continuousQueryListQueries(project);
+ContinuousqueryApi api = new ContinuousqueryApi(apiClient);
+api.listQueries();
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api->continuousQueryListQueries(project);
+$api->listQueries();
 
 
 ```
@@ -3274,69 +3340,113 @@ $api->continuousQueryListQueries(project);
 > The above command returns JSON structured like this:
 
 ```json
-{
-[
-  "project" : "str", "name" : "str", "query" : "str", "options" : {"prop": value}, "tableName" : "str", "partitionKeys" : [
-  "str"
-]
-]
-}
+[ {
+  "name" : "str",
+  "query" : "str",
+  "options" : {
+    "prop" : { }
+  },
+  "tableName" : "str",
+  "partitionKeys" : [ "str" ]
+} ]
 ```
 
 ### HTTP Request
 `POST /continuous-query/list`
-### Form Parameters
-|Parameter|Required|Type|Description|
-|----|----|----|----|
-|project|false|string||
-
-
-## Get query schema
+## Delete stream
 ```shell
-curl "app.getrakam.com/continuous-query/schema"
-  -H "read_key: myread_key"
--X POST -d '{"project" : "str", "names" : [
-  "str"
-]}'
+curl "api.rakam.io/continuous-query/refresh"
+  -H "master_key: mymaster_key"
+-X POST -d '{ }'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
-apiClient.configuration.api_key['read_key'] = 'myApiKey'
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['master_key'] = 'myApiKey'
 
 api = client.ContinuousqueryApi();
-api.continuous_query_schema(project, names);
+api.refresh_query();
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.ContinuousqueryApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.ContinuousqueryApi;
 
 ApiClient apiClient = new ApiClient();
-apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-ContinuousqueryApi api = new ContinuousqueryApi();
-api.continuousQuerySchema(project, names);
+apiClient.getAuthentication("master_key").setApiKey("myApiKey");
+ContinuousqueryApi api = new ContinuousqueryApi(apiClient);
+api.refreshQuery();
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
+
+$api_client->getConfig().setApiKey("master_key", "myApiKey");
+
+$api = new Swagger\Client\ContinuousqueryApi($api_client);
+$api->refreshQuery();
+
+
+```
+
+### HTTP Request
+`GET /continuous-query/refresh`
+## Get query schema
+```shell
+curl "api.rakam.io/continuous-query/schema"
+  -H "read_key: myread_key"
+-X POST -d '{
+  "names" : [ "str" ]
+}'
+```
+
+```python
+
+from ..api_client import ApiClient;
+from ..configuration import Configuration
+
+apiClient = client.ApiClient("api.rakam.io")
+apiClient.configuration.api_key['read_key'] = 'myApiKey'
+
+api = client.ContinuousqueryApi();
+api.get_schema_of_query(names);
+
+
+```
+
+```java
+import org.rakam.client.ApiClient;
+import org.rakam.client.ContinuousqueryApi;
+
+ApiClient apiClient = new ApiClient();
+apiClient.getAuthentication("read_key").setApiKey("myApiKey");
+ContinuousqueryApi api = new ContinuousqueryApi(apiClient);
+api.getSchemaOfQuery(names);
+
+```
+
+```php
+
+
+require_once('/path/to/org.rakam.client');
+
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api->continuousQuerySchema(project, names);
+$api->getSchemaOfQuery(names);
 
 
 ```
@@ -3344,13 +3454,17 @@ $api->continuousQuerySchema(project, names);
 > The above command returns JSON structured like this:
 
 ```json
-{
-[
-  "name" : "str", "fields" : [
-  "name" : "str", "type" : "str", "unique" : false, "descriptiveName" : "str", "description" : "str", "category" : "str"
-]
-]
-}
+[ {
+  "name" : "str",
+  "fields" : [ {
+    "name" : "str",
+    "type" : "str",
+    "unique" : false,
+    "descriptiveName" : "str",
+    "description" : "str",
+    "category" : "str"
+  } ]
+} ]
 ```
 
 ### HTTP Request
@@ -3358,54 +3472,54 @@ $api->continuousQuerySchema(project, names);
 ### Form Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |names|false|multi string array||
 
 
 ## Test continuous query
 ```shell
-curl "app.getrakam.com/continuous-query/test"
+curl "api.rakam.io/continuous-query/test"
   -H "read_key: myread_key"
--X POST -d '{"project" : "str", "query" : "str"}'
+-X POST -d '{
+  "query" : "str"
+}'
 ```
 
 ```python
 
-from swagger_client/apis import ApiClient;
-from swagger_client/apis.configuration import Configuration
-import swagger_client/apis as client;
+from ..api_client import ApiClient;
+from ..configuration import Configuration
 
-apiClient = client.ApiClient(HOST)
+apiClient = client.ApiClient("api.rakam.io")
 apiClient.configuration.api_key['read_key'] = 'myApiKey'
 
 api = client.ContinuousqueryApi();
-api.continuous_query_test(project, query);
+api.test_query(query);
 
 
 ```
 
 ```java
-import io.swagger.client.api.ApiClient;
-import io.swagger.client.api.ContinuousqueryApi;
+import org.rakam.client.ApiClient;
+import org.rakam.client.ContinuousqueryApi;
 
 ApiClient apiClient = new ApiClient();
 apiClient.getAuthentication("read_key").setApiKey("myApiKey");
-ContinuousqueryApi api = new ContinuousqueryApi();
-api.continuousQueryTest(project, query);
+ContinuousqueryApi api = new ContinuousqueryApi(apiClient);
+api.testQuery(query);
 
 ```
 
 ```php
 
 
-require_once('/path/to/Swagger\Client\Api');
+require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('https://app.rakam.com');
+$api_client = new Swagger\Client\ApiClient('api.rakam.io');
 
 $api_client->getConfig().setApiKey("read_key", "myApiKey");
 
 $api = new Swagger\Client\ContinuousqueryApi($api_client);
-$api->continuousQueryTest(project, query);
+$api->testQuery(query);
 
 
 ```
@@ -3413,9 +3527,7 @@ $api->continuousQueryTest(project, query);
 > The above command returns JSON structured like this:
 
 ```json
-{
 false
-}
 ```
 
 ### HTTP Request
@@ -3423,7 +3535,6 @@ false
 ### Form Parameters
 |Parameter|Required|Type|Description|
 |----|----|----|----|
-|project|false|string||
 |query|false|string||
 
 
@@ -3432,52 +3543,62 @@ false
 ### EventContext
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|writeKey||false|string||
-|apiVersion||false|string||
-|uploadTime||false|integer (int64)||
-|checksum||false|string||
+|apiKey||true|string||
+|library||true|[Library](#library)||
+|apiVersion||true|string||
+|uploadTime||true|integer (int64)||
+|checksum||true|string||
+|plugins||true|[MappingPlugin](#mappingplugin) array||
 
 
 ### SchemaField
 |name|description|required|schema|default|
 |----|----|----|----|----|
 |name||false|string||
-|type||false|enum (STRING, DOUBLE, LONG, BOOLEAN, DATE, TIME, TIMESTAMP, BINARY, ARRAY_STRING, ARRAY_DOUBLE, ARRAY_LONG, ARRAY_BOOLEAN, ARRAY_DATE, ARRAY_TIME, ARRAY_TIMESTAMP, ARRAY_BINARY, MAP_STRING, MAP_DOUBLE, MAP_LONG, MAP_BOOLEAN, MAP_DATE, MAP_TIME, MAP_TIMESTAMP, MAP_BINARY)||
+|type||false|enum (STRING, INTEGER, DECIMAL, DOUBLE, LONG, BOOLEAN, DATE, TIME, TIMESTAMP, BINARY, ARRAY_STRING, ARRAY_INTEGER, ARRAY_DECIMAL, ARRAY_DOUBLE, ARRAY_LONG, ARRAY_BOOLEAN, ARRAY_DATE, ARRAY_TIME, ARRAY_TIMESTAMP, ARRAY_BINARY, MAP_STRING, MAP_INTEGER, MAP_DECIMAL, MAP_DOUBLE, MAP_LONG, MAP_BOOLEAN, MAP_DATE, MAP_TIME, MAP_TIMESTAMP, MAP_BINARY)||
 |unique||false|boolean|false|
 |descriptiveName||false|string||
 |description||false|string||
 |category||false|string||
 
 
-### Variant
+### FunnelWindow
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|name||false|string||
-|weight||false|integer (int32)||
-|data||false|object||
+|value||false|integer (int32)||
+|type||false|enum (DAY, WEEK, MONTH)||
 
 
-### Goal
+### User
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|collection||false|string||
-|filter||false|string||
+|id||true|object||
+|api||true|[UserContext](#usercontext)||
+|properties||true|object||
 
 
 ### UserContext
 |name|description|required|schema|default|
 |----|----|----|----|----|
-|writeKey||false|string||
-|apiVersion||false|string||
+|apiKey||true|string||
+|apiLibrary||true|string||
+|apiVersion||true|string||
+
+
+### Measure
+|name|description|required|schema|default|
+|----|----|----|----|----|
+|column||true|string||
+|aggregation||true|enum (COUNT, COUNT_UNIQUE, SUM, MINIMUM, MAXIMUM, AVERAGE, APPROXIMATE_UNIQUE)||
 
 
 ### Event
 |name|description|required|schema|default|
 |----|----|----|----|----|
 |project||false|string||
-|collection||false|string||
-|api||false|[EventContext](#eventcontext)||
-|properties||false|object||
+|collection||true|string||
+|api||true|[EventContext](#eventcontext)||
+|properties||true|object||
 
 
 ### RetentionAction
@@ -3506,6 +3627,5 @@ false
 |name|description|required|schema|default|
 |----|----|----|----|----|
 |collection||false|string||
-|filterExpression||false|string||
 
 
