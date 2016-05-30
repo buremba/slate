@@ -155,7 +155,7 @@
 
 <h3 id="uri-scheme">URI scheme</h3>
 
-<p>Host: app.rakam.io
+<p>Host: https://app.rakam.io
 BasePath: /</p>
 
 <h1 id="funnel">Funnel</h1>
@@ -163,27 +163,28 @@ BasePath: /</p>
 <p>Funnel Analyzer module</p>
 
 <h2 id="execute-query">Execute query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/funnel/analyze"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/funnel/analyze"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "steps" : [ { \ 
-    "collection" : "str" \ 
-  } ], \ 
-  "dimension" : "str", \ 
-  "startDate" : "2015-01-20", \ 
-  "window" : { \ 
-    "value" : 1, \ 
-    "type" : "str" \ 
-  }, \ 
-  "endDate" : "2015-01-20" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "steps" : [ {
+    "collection" : "str"
+  } ],
+  "dimension" : "str",
+  "startDate" : "2015-01-20",
+  "window" : {
+    "value" : 1,
+    "type" : "str"
+  },
+  "endDate" : "2015-01-20"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">FunnelApi</span><span class="p">();</span>
@@ -204,7 +205,7 @@ BasePath: /</p>
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -290,26 +291,27 @@ $api-&gt;analyzeFunnel(funnel_query);
 <h1 id="realtime">Realtime</h1>
 
 <h2 id="create-report">Create report</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/create"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/realtime/create"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "name" : "str", \ 
-  "measures" : [ { \ 
-    "column" : "str", \ 
-    "aggregation" : "str" \ 
-  } ], \ 
-  "table_name" : "str", \ 
-  "collections" : [ "str" ], \ 
-  "filter" : "str", \ 
-  "dimensions" : [ "str" ] \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "name" : "str",
+  "measures" : [ {
+    "column" : "str",
+    "aggregation" : "str"
+  } ],
+  "table_name" : "str",
+  "collections" : [ "str" ],
+  "filter" : "str",
+  "dimensions" : [ "str" ]
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RealtimeApi</span><span class="p">();</span>
@@ -330,7 +332,7 @@ $api-&gt;analyzeFunnel(funnel_query);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -402,18 +404,19 @@ $api-&gt;createTable(real_time_report);
 </tbody></table>
 
 <h2 id="delete-report">Delete report</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/delete"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/realtime/delete"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "table_name" : "str" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "table_name" : "str"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RealtimeApi</span><span class="p">();</span>
@@ -434,7 +437,7 @@ $api-&gt;createTable(real_time_report);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -476,27 +479,28 @@ $api-&gt;deleteTable(table_name);
 </tbody></table>
 
 <h2 id="get-report">Get report</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/get"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/realtime/get"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "table_name" : "str", \ 
-  "filter" : "str", \ 
-  "measure" : { \ 
-    "column" : "str", \ 
-    "aggregation" : "str" \ 
-  }, \ 
-  "dimensions" : [ "str" ], \ 
-  "aggregate" : true, \ 
-  "date_start" : "2016-03-03T10:15:30.00Z", \ 
-  "date_end" : "2016-03-03T10:15:30.00Z" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "table_name" : "str",
+  "filter" : "str",
+  "measure" : {
+    "column" : "str",
+    "aggregation" : "str"
+  },
+  "dimensions" : [ "str" ],
+  "aggregate" : true,
+  "date_start" : "2016-03-03T10:15:30.00Z",
+  "date_end" : "2016-03-03T10:15:30.00Z"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RealtimeApi</span><span class="p">();</span>
@@ -517,7 +521,7 @@ $api-&gt;deleteTable(table_name);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -596,16 +600,17 @@ $api-&gt;queryTable(realtime_query_table);
 </tbody></table>
 
 <h2 id="list-queries">List queries</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/realtime/list"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/realtime/list"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RealtimeApi</span><span class="p">();</span>
@@ -626,7 +631,7 @@ $api-&gt;queryTable(realtime_query_table);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -641,12 +646,12 @@ $api-&gt;listTables();
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"partition_keys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"tableName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"partitionKeys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -659,28 +664,29 @@ $api-&gt;listTables();
 <p>Retention Analyzer module</p>
 
 <h2 id="execute-query">Execute query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/retention/analyze"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/retention/analyze"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "first_action" : { \ 
-    "collection" : "str" \ 
-  }, \ 
-  "returning_action" : { \ 
-    "collection" : "str" \ 
-  }, \ 
-  "dimension" : "str", \ 
-  "date_unit" : "str", \ 
-  "period" : 1, \ 
-  "startDate" : "2015-01-20", \ 
-  "endDate" : "2015-01-20" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "first_action" : {
+    "collection" : "str"
+  },
+  "returning_action" : {
+    "collection" : "str"
+  },
+  "dimension" : "str",
+  "date_unit" : "str",
+  "period" : 1,
+  "startDate" : "2015-01-20",
+  "endDate" : "2015-01-20"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">RetentionApi</span><span class="p">();</span>
@@ -701,7 +707,7 @@ $api-&gt;listTables();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -801,28 +807,29 @@ $api-&gt;analyzeRetention(retention_query);
 <p>User module for Rakam</p>
 
 <h2 id="create-new-users">Create new users</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/batch/create"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/user/batch/create"</span>
   -H <span class="s2">"write_key: mywrite_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "users" : [ { \ 
-    "id" : "object", \ 
-    "api" : { \ 
-      "apiLibrary" : "str", \ 
-      "apiVersion" : "str", \ 
-      "apiKey" : "str" \ 
-    }, \ 
-    "properties" : { \ 
-      "prop" : { } \ 
-    } \ 
-  } ] \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "users" : [ {
+    "id" : "object",
+    "api" : {
+      "apiLibrary" : "str",
+      "apiVersion" : "str",
+      "apiKey" : "str"
+    },
+    "properties" : {
+      "prop" : { }
+    }
+  } ]
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'write_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
@@ -843,7 +850,7 @@ $api-&gt;analyzeRetention(retention_query);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("write_key", "myApiKey");
 
@@ -882,25 +889,26 @@ $api-&gt;createUsers(user_create_users);
 </tbody></table>
 
 <h2 id="create-new-user">Create new user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/create"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "id" : "object", \ 
-  "api" : { \ 
-    "apiLibrary" : "str", \ 
-    "apiVersion" : "str", \ 
-    "apiKey" : "str" \ 
-  }, \ 
-  "properties" : { \ 
-    "prop" : { } \ 
-  } \ 
-}'</span>
-</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/user/create"</span>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "id" : "object",
+  "api" : {
+    "apiLibrary" : "str",
+    "apiVersion" : "str",
+    "apiKey" : "str"
+  },
+  "properties" : {
+    "prop" : { }
+  }
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
 <span class="n">api</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
@@ -920,7 +928,7 @@ $api-&gt;createUsers(user_create_users);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 
 $api = new Swagger\Client\UserApi($api_client);
@@ -970,35 +978,36 @@ $api-&gt;createUser(user);
 </tbody></table>
 
 <h2 id="get-events-of-the-user">Get events of the user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/create_segment"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/user/create_segment"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "name" : "str", \ 
-  "table_name" : "str", \ 
-  "filter_expression" : "str", \ 
-  "event_filters" : [ { \ 
-    "collection" : "str", \ 
-    "timeframe" : { \ 
-      "start" : "2016-03-03T10:15:30.00Z", \ 
-      "end" : "2016-03-03T10:15:30.00Z" \ 
-    }, \ 
-    "aggregation" : { \ 
-      "field" : "str", \ 
-      "minimum" : 1, \ 
-      "maximum" : 1, \ 
-      "type" : "str" \ 
-    }, \ 
-    "filterExpression" : "str" \ 
-  } ], \ 
-  "cache_eviction" : "str" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "name" : "str",
+  "table_name" : "str",
+  "filter_expression" : "str",
+  "event_filters" : [ {
+    "collection" : "str",
+    "timeframe" : {
+      "start" : "2016-03-03T10:15:30.00Z",
+      "end" : "2016-03-03T10:15:30.00Z"
+    },
+    "aggregation" : {
+      "field" : "str",
+      "minimum" : 1,
+      "maximum" : 1,
+      "type" : "str"
+    },
+    "filterExpression" : "str"
+  } ],
+  "cache_eviction" : "str"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
@@ -1019,7 +1028,7 @@ $api-&gt;createUser(user);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -1085,18 +1094,19 @@ $api-&gt;createSegment(user_create_segment);
 </tbody></table>
 
 <h2 id="get-user">Get user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/get"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/user/get"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "user" : "object" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "user" : "object"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
@@ -1117,7 +1127,7 @@ $api-&gt;createSegment(user_create_segment);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -1166,20 +1176,21 @@ $api-&gt;getUser(user_get_user);
 </tbody></table>
 
 <h2 id="get-events-of-the-user">Get events of the user</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/get_events"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/user/get_events"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "user" : "str", \ 
-  "limit" : 0, \ 
-  "offset" : "str" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "user" : "str",
+  "limit" : 0,
+  "offset" : "str"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
@@ -1200,7 +1211,7 @@ $api-&gt;getUser(user_get_user);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -1256,25 +1267,26 @@ $api-&gt;getEvents(user, limit, offset);
 </tbody></table>
 
 <h2 id="set-user-property">Set user property</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/increment_property"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/user/increment_property"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "api" : { \ 
-    "apiLibrary" : "str", \ 
-    "apiVersion" : "str", \ 
-    "apiKey" : "str" \ 
-  }, \ 
-  "id" : "str", \ 
-  "property" : "str", \ 
-  "value" : 1.0 \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "api" : {
+    "apiLibrary" : "str",
+    "apiVersion" : "str",
+    "apiKey" : "str"
+  },
+  "id" : "str",
+  "property" : "str",
+  "value" : 1.0
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
@@ -1295,7 +1307,7 @@ $api-&gt;getEvents(user, limit, offset);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -1355,26 +1367,27 @@ $api-&gt;incrementProperty(user_increment_property);
 </tbody></table>
 
 <h2 id="merge-user-with-anonymous-id">Merge user with anonymous id</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/merge"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/user/merge"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "user" : "str", \ 
-  "api" : { \ 
-    "apiLibrary" : "str", \ 
-    "apiVersion" : "str", \ 
-    "apiKey" : "str" \ 
-  }, \ 
-  "anonymous_id" : "str", \ 
-  "created_at" : "2016-03-03T10:15:30.00Z", \ 
-  "merged_at" : "2016-03-03T10:15:30.00Z" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "user" : "str",
+  "api" : {
+    "apiLibrary" : "str",
+    "apiVersion" : "str",
+    "apiKey" : "str"
+  },
+  "anonymous_id" : "str",
+  "created_at" : "2016-03-03T10:15:30.00Z",
+  "merged_at" : "2016-03-03T10:15:30.00Z"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
@@ -1395,7 +1408,7 @@ $api-&gt;incrementProperty(user_increment_property);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -1458,16 +1471,17 @@ $api-&gt;mergeUser(user_merge_user);
 </tbody></table>
 
 <h2 id="get-user-storage-metadata">Get user storage metadata</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/metadata"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/user/metadata"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
@@ -1488,7 +1502,7 @@ $api-&gt;mergeUser(user_merge_user);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -1503,39 +1517,40 @@ $api-&gt;getMetadata();
 <p><code class="prettyprint">GET /user/metadata</code></p>
 
 <h2 id="search-users">Search users</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/search"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/user/search"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "columns" : [ "str" ], \ 
-  "filter" : "str", \ 
-  "event_filters" : [ { \ 
-    "collection" : "str", \ 
-    "timeframe" : { \ 
-      "start" : "2016-03-03T10:15:30.00Z", \ 
-      "end" : "2016-03-03T10:15:30.00Z" \ 
-    }, \ 
-    "aggregation" : { \ 
-      "field" : "str", \ 
-      "minimum" : 1, \ 
-      "maximum" : 1, \ 
-      "type" : "str" \ 
-    }, \ 
-    "filterExpression" : "str" \ 
-  } ], \ 
-  "sorting" : { \ 
-    "column" : "str", \ 
-    "order" : "str" \ 
-  }, \ 
-  "offset" : "str", \ 
-  "limit" : 1 \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "columns" : [ "str" ],
+  "filter" : "str",
+  "event_filters" : [ {
+    "collection" : "str",
+    "timeframe" : {
+      "start" : "2016-03-03T10:15:30.00Z",
+      "end" : "2016-03-03T10:15:30.00Z"
+    },
+    "aggregation" : {
+      "field" : "str",
+      "minimum" : 1,
+      "maximum" : 1,
+      "type" : "str"
+    },
+    "filterExpression" : "str"
+  } ],
+  "sorting" : {
+    "column" : "str",
+    "order" : "str"
+  },
+  "offset" : "str",
+  "limit" : 1
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
@@ -1556,7 +1571,7 @@ $api-&gt;getMetadata();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -1646,25 +1661,26 @@ $api-&gt;searchUsers(user_search_users);
 </tbody></table>
 
 <h2 id="set-user-properties">Set user properties</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/set_properties"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "id" : "object", \ 
-  "api" : { \ 
-    "apiLibrary" : "str", \ 
-    "apiVersion" : "str", \ 
-    "apiKey" : "str" \ 
-  }, \ 
-  "properties" : { \ 
-    "prop" : { } \ 
-  } \ 
-}'</span>
-</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/user/set_properties"</span>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "id" : "object",
+  "api" : {
+    "apiLibrary" : "str",
+    "apiVersion" : "str",
+    "apiKey" : "str"
+  },
+  "properties" : {
+    "prop" : { }
+  }
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
 <span class="n">api</span><span class="o">.</span><span class="n">set_properties</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
@@ -1684,7 +1700,7 @@ $api-&gt;searchUsers(user_search_users);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 
 $api = new Swagger\Client\UserApi($api_client);
@@ -1734,25 +1750,26 @@ $api-&gt;setProperties(user);
 </tbody></table>
 
 <h2 id="set-user-properties-once">Set user properties once</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/set_properties_once"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "id" : "object", \ 
-  "api" : { \ 
-    "apiLibrary" : "str", \ 
-    "apiVersion" : "str", \ 
-    "apiKey" : "str" \ 
-  }, \ 
-  "properties" : { \ 
-    "prop" : { } \ 
-  } \ 
-}'</span>
-</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/user/set_properties_once"</span>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "id" : "object",
+  "api" : {
+    "apiLibrary" : "str",
+    "apiVersion" : "str",
+    "apiKey" : "str"
+  },
+  "properties" : {
+    "prop" : { }
+  }
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
 <span class="n">api</span><span class="o">.</span><span class="n">set_properties_once</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
@@ -1772,7 +1789,7 @@ $api-&gt;setProperties(user);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 
 $api = new Swagger\Client\UserApi($api_client);
@@ -1816,23 +1833,24 @@ $api-&gt;setPropertiesOnce(user);
 </tbody></table>
 
 <h2 id="unset-user-property">Unset user property</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/user/unset_properties"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "api" : { \ 
-    "apiLibrary" : "str", \ 
-    "apiVersion" : "str", \ 
-    "apiKey" : "str" \ 
-  }, \ 
-  "id" : "object", \ 
-  "properties" : [ "str" ] \ 
-}'</span>
-</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/user/unset_properties"</span>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "api" : {
+    "apiLibrary" : "str",
+    "apiVersion" : "str",
+    "apiKey" : "str"
+  },
+  "id" : "object",
+  "properties" : [ "str" ]
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">UserApi</span><span class="p">();</span>
 <span class="n">api</span><span class="o">.</span><span class="n">unset_property</span><span class="p">(</span><span class="n">user_unset_property</span><span class="p">);</span>
@@ -1852,7 +1870,7 @@ $api-&gt;setPropertiesOnce(user);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 
 $api = new Swagger\Client\UserApi($api_client);
@@ -1909,16 +1927,17 @@ $api-&gt;unsetProperty(user_unset_property);
 <p>System related actions</p>
 
 <h2 id="list-installed-modules">List installed modules</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/configurations"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/admin/configurations"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
@@ -1939,7 +1958,7 @@ $api-&gt;unsetProperty(user_unset_property);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -1954,18 +1973,19 @@ $api-&gt;getConfigurations();
 <p><code class="prettyprint">GET /admin/configurations</code></p>
 
 <h2 id="check-lock-key">Check lock key</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/lock_key"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/admin/lock_key"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "lock_key" : "str" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "lock_key" : "str"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
@@ -1986,7 +2006,7 @@ $api-&gt;getConfigurations();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -2028,16 +2048,17 @@ $api-&gt;checkLockKey(lock_key);
 </tbody></table>
 
 <h2 id="list-installed-modules-for-ui">List installed modules for ui</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/modules"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/admin/modules"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
@@ -2058,7 +2079,7 @@ $api-&gt;checkLockKey(lock_key);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -2073,16 +2094,17 @@ $api-&gt;modules();
 <p><code class="prettyprint">GET /admin/modules</code></p>
 
 <h2 id="get-types">Get types</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/admin/types"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/admin/types"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
@@ -2103,7 +2125,7 @@ $api-&gt;modules();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -2118,16 +2140,17 @@ $api-&gt;getTypes();
 <p><code class="prettyprint">GET /admin/types</code></p>
 
 <h2 id="get-collection-names">Get collection names</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/collection"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/project/collection"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
@@ -2148,7 +2171,7 @@ $api-&gt;getTypes();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -2169,18 +2192,19 @@ $api-&gt;collections();
 <p><code class="prettyprint">POST /project/collection</code></p>
 
 <h2 id="create-project">Create project</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/create"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "lock_key" : "str", \ 
-  "name" : "str" \ 
-}'</span>
-</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/project/create"</span>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "lock_key" : "str",
+  "name" : "str"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
 <span class="n">api</span><span class="o">.</span><span class="n">create_project</span><span class="p">(</span><span class="n">lock_key</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
@@ -2200,7 +2224,7 @@ $api-&gt;collections();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 
 $api = new Swagger\Client\AdminApi($api_client);
@@ -2248,16 +2272,17 @@ $api-&gt;createProject(lock_key, name);
 </tbody></table>
 
 <h2 id="create-api-keys">Create API Keys</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/create-api-keys"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/project/create-api-keys"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
@@ -2278,7 +2303,7 @@ $api-&gt;createProject(lock_key, name);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -2303,16 +2328,17 @@ $api-&gt;createApiKeys();
 <p><code class="prettyprint">POST /project/create-api-keys</code></p>
 
 <h2 id="delete-project">Delete project</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/delete"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/project/delete"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
@@ -2333,7 +2359,7 @@ $api-&gt;createApiKeys();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -2357,16 +2383,17 @@ $api-&gt;deleteProject();
 <p><code class="prettyprint">POST /project/delete</code></p>
 
 <h2 id="list-created-projects">List created projects</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/list"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/project/list"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
@@ -2387,7 +2414,7 @@ $api-&gt;deleteProject();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -2402,16 +2429,17 @@ $api-&gt;getProjects();
 <p><code class="prettyprint">GET /project/list</code></p>
 
 <h2 id="revoke-api-keys">Revoke API Keys</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/revoke-api-keys"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/project/revoke-api-keys"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
@@ -2432,7 +2460,7 @@ $api-&gt;getProjects();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -2456,18 +2484,19 @@ $api-&gt;revokeApiKeys();
 <p><code class="prettyprint">POST /project/revoke-api-keys</code></p>
 
 <h2 id="get-collection-schema">Get collection schema</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/project/schema"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "names" : [ "str" ] \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "names" : [ "str" ]
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
@@ -2488,7 +2517,7 @@ $api-&gt;revokeApiKeys();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -2537,26 +2566,27 @@ $api-&gt;schema(names);
 </tbody></table>
 
 <h2 id="add-fields-to-collections">Add fields to collections</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema/add"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/project/schema/add"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "collection" : "str", \ 
-  "fields" : [ { \ 
-    "name" : "str", \ 
-    "type" : "str", \ 
-    "unique" : true, \ 
-    "descriptiveName" : "str", \ 
-    "description" : "str", \ 
-    "category" : "str" \ 
-  } ] \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "collection" : "str",
+  "fields" : [ {
+    "name" : "str",
+    "type" : "str",
+    "unique" : true,
+    "descriptiveName" : "str",
+    "description" : "str",
+    "category" : "str"
+  } ]
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
@@ -2577,7 +2607,7 @@ $api-&gt;schema(names);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -2629,20 +2659,21 @@ $api-&gt;addFieldsToSchema(project_add_fields_to_schema);
 </tbody></table>
 
 <h2 id="add-fields-to-collections-by-transforming-other-schemas">Add fields to collections by transforming other schemas</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/schema/add/custom"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/project/schema/add/custom"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "collection" : "str", \ 
-  "schema_type" : "str", \ 
-  "schema" : "str" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "collection" : "str",
+  "schema_type" : "str",
+  "schema" : "str"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
@@ -2663,7 +2694,7 @@ $api-&gt;addFieldsToSchema(project_add_fields_to_schema);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -2721,15 +2752,16 @@ $api-&gt;addCustomFieldsToSchema(collection, schema_type, schema);
 </tbody></table>
 
 <h2 id="get-project-stats">Get project stats</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/project/stats"</span>
--X POST -d <span class="s1">'
-[ "object" ]'</span>
-</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/project/stats"</span>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+[ "object" ]
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">AdminApi</span><span class="p">();</span>
 <span class="n">api</span><span class="o">.</span><span class="n">get_stats</span><span class="p">(</span><span class="n">project_get_stats</span><span class="p">);</span>
@@ -2749,7 +2781,7 @@ $api-&gt;addCustomFieldsToSchema(collection, schema_type, schema);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 
 $api = new Swagger\Client\AdminApi($api_client);
@@ -2793,52 +2825,53 @@ $api-&gt;getStats(project_get_stats);
 <p>Event Analyzer</p>
 
 <h2 id="collect-multiple-events">Collect multiple events</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/batch"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "api" : { \ 
-    "api_key" : "str", \ 
-    "library" : { \ 
-      "name" : "str", \ 
-      "version" : "str" \ 
-    }, \ 
-    "api_version" : "str", \ 
-    "upload_time" : 1, \ 
-    "checksum" : "str", \ 
-    "plugins" : [ { \ 
-      "name" : "str", \ 
-      "arguments" : { \ 
-        "prop" : { } \ 
-      } \ 
-    } ] \ 
-  }, \ 
-  "events" : [ { \ 
-    "collection" : "str", \ 
-    "api" : { \ 
-      "api_key" : "str", \ 
-      "library" : { \ 
-        "name" : "str", \ 
-        "version" : "str" \ 
-      }, \ 
-      "api_version" : "str", \ 
-      "upload_time" : 1, \ 
-      "checksum" : "str", \ 
-      "plugins" : [ { \ 
-        "name" : "str", \ 
-        "arguments" : { \ 
-          "prop" : { } \ 
-        } \ 
-      } ] \ 
-    }, \ 
-    "properties" : "object" \ 
-  } ] \ 
-}'</span>
-</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/event/batch"</span>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "api" : {
+    "api_key" : "str",
+    "library" : {
+      "name" : "str",
+      "version" : "str"
+    },
+    "api_version" : "str",
+    "upload_time" : 1,
+    "checksum" : "str",
+    "plugins" : [ {
+      "name" : "str",
+      "arguments" : {
+        "prop" : { }
+      }
+    } ]
+  },
+  "events" : [ {
+    "collection" : "str",
+    "api" : {
+      "api_key" : "str",
+      "library" : {
+        "name" : "str",
+        "version" : "str"
+      },
+      "api_version" : "str",
+      "upload_time" : 1,
+      "checksum" : "str",
+      "plugins" : [ {
+        "name" : "str",
+        "arguments" : {
+          "prop" : { }
+        }
+      } ]
+    },
+    "properties" : "object"
+  } ]
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">EventApi</span><span class="p">();</span>
 <span class="n">api</span><span class="o">.</span><span class="n">batch_events</span><span class="p">(</span><span class="n">event_list</span><span class="p">);</span>
@@ -2858,7 +2891,7 @@ $api-&gt;getStats(project_get_stats);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 
 $api = new Swagger\Client\EventApi($api_client);
@@ -2904,52 +2937,53 @@ $api-&gt;batchEvents(event_list);
 <p>Returns 1 if the events are collected.</p>
 
 <h2 id="collect-bulk-events">Collect Bulk events</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "api" : { \ 
-    "api_key" : "str", \ 
-    "library" : { \ 
-      "name" : "str", \ 
-      "version" : "str" \ 
-    }, \ 
-    "api_version" : "str", \ 
-    "upload_time" : 1, \ 
-    "checksum" : "str", \ 
-    "plugins" : [ { \ 
-      "name" : "str", \ 
-      "arguments" : { \ 
-        "prop" : { } \ 
-      } \ 
-    } ] \ 
-  }, \ 
-  "events" : [ { \ 
-    "collection" : "str", \ 
-    "api" : { \ 
-      "api_key" : "str", \ 
-      "library" : { \ 
-        "name" : "str", \ 
-        "version" : "str" \ 
-      }, \ 
-      "api_version" : "str", \ 
-      "upload_time" : 1, \ 
-      "checksum" : "str", \ 
-      "plugins" : [ { \ 
-        "name" : "str", \ 
-        "arguments" : { \ 
-          "prop" : { } \ 
-        } \ 
-      } ] \ 
-    }, \ 
-    "properties" : "object" \ 
-  } ] \ 
-}'</span>
-</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/event/bulk"</span>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "api" : {
+    "api_key" : "str",
+    "library" : {
+      "name" : "str",
+      "version" : "str"
+    },
+    "api_version" : "str",
+    "upload_time" : 1,
+    "checksum" : "str",
+    "plugins" : [ {
+      "name" : "str",
+      "arguments" : {
+        "prop" : { }
+      }
+    } ]
+  },
+  "events" : [ {
+    "collection" : "str",
+    "api" : {
+      "api_key" : "str",
+      "library" : {
+        "name" : "str",
+        "version" : "str"
+      },
+      "api_version" : "str",
+      "upload_time" : 1,
+      "checksum" : "str",
+      "plugins" : [ {
+        "name" : "str",
+        "arguments" : {
+          "prop" : { }
+        }
+      } ]
+    },
+    "properties" : "object"
+  } ]
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">EventApi</span><span class="p">();</span>
 <span class="n">api</span><span class="o">.</span><span class="n">bulk_events</span><span class="p">(</span><span class="n">event_list</span><span class="p">);</span>
@@ -2969,7 +3003,7 @@ $api-&gt;batchEvents(event_list);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 
 $api = new Swagger\Client\EventApi($api_client);
@@ -3018,52 +3052,53 @@ $api-&gt;bulkEvents(event_list);
 <p>Bulk API requires master_key as api key and designed to handle large value of data. The endpoint also accepts application/avro and text/csv formats. You need need to set &lsquo;collection&rsquo; and &#39;master_key&rsquo; query parameters if the content-type is not application/json.</p>
 
 <h2 id="collect-bulk-events-from-remote">Collect bulk events from remote</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/bulk/remote"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "api" : { \ 
-    "api_key" : "str", \ 
-    "library" : { \ 
-      "name" : "str", \ 
-      "version" : "str" \ 
-    }, \ 
-    "api_version" : "str", \ 
-    "upload_time" : 1, \ 
-    "checksum" : "str", \ 
-    "plugins" : [ { \ 
-      "name" : "str", \ 
-      "arguments" : { \ 
-        "prop" : { } \ 
-      } \ 
-    } ] \ 
-  }, \ 
-  "events" : [ { \ 
-    "collection" : "str", \ 
-    "api" : { \ 
-      "api_key" : "str", \ 
-      "library" : { \ 
-        "name" : "str", \ 
-        "version" : "str" \ 
-      }, \ 
-      "api_version" : "str", \ 
-      "upload_time" : 1, \ 
-      "checksum" : "str", \ 
-      "plugins" : [ { \ 
-        "name" : "str", \ 
-        "arguments" : { \ 
-          "prop" : { } \ 
-        } \ 
-      } ] \ 
-    }, \ 
-    "properties" : "object" \ 
-  } ] \ 
-}'</span>
-</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/event/bulk/remote"</span>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "api" : {
+    "api_key" : "str",
+    "library" : {
+      "name" : "str",
+      "version" : "str"
+    },
+    "api_version" : "str",
+    "upload_time" : 1,
+    "checksum" : "str",
+    "plugins" : [ {
+      "name" : "str",
+      "arguments" : {
+        "prop" : { }
+      }
+    } ]
+  },
+  "events" : [ {
+    "collection" : "str",
+    "api" : {
+      "api_key" : "str",
+      "library" : {
+        "name" : "str",
+        "version" : "str"
+      },
+      "api_version" : "str",
+      "upload_time" : 1,
+      "checksum" : "str",
+      "plugins" : [ {
+        "name" : "str",
+        "arguments" : {
+          "prop" : { }
+        }
+      } ]
+    },
+    "properties" : "object"
+  } ]
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">EventApi</span><span class="p">();</span>
 <span class="n">api</span><span class="o">.</span><span class="n">bulk_events_remote</span><span class="p">(</span><span class="n">event_list</span><span class="p">);</span>
@@ -3083,7 +3118,7 @@ $api-&gt;bulkEvents(event_list);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 
 $api = new Swagger\Client\EventApi($api_client);
@@ -3127,34 +3162,35 @@ $api-&gt;bulkEventsRemote(event_list);
 </tbody></table>
 
 <h2 id="collect-event">Collect event</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/event/collect"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "collection" : "str", \ 
-  "api" : { \ 
-    "api_key" : "str", \ 
-    "library" : { \ 
-      "name" : "str", \ 
-      "version" : "str" \ 
-    }, \ 
-    "api_version" : "str", \ 
-    "upload_time" : 1, \ 
-    "checksum" : "str", \ 
-    "plugins" : [ { \ 
-      "name" : "str", \ 
-      "arguments" : { \ 
-        "prop" : { } \ 
-      } \ 
-    } ] \ 
-  }, \ 
-  "properties" : "object" \ 
-}'</span>
-</code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/event/collect"</span>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "collection" : "str",
+  "api" : {
+    "api_key" : "str",
+    "library" : {
+      "name" : "str",
+      "version" : "str"
+    },
+    "api_version" : "str",
+    "upload_time" : 1,
+    "checksum" : "str",
+    "plugins" : [ {
+      "name" : "str",
+      "arguments" : {
+        "prop" : { }
+      }
+    } ]
+  },
+  "properties" : "object"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">EventApi</span><span class="p">();</span>
 <span class="n">api</span><span class="o">.</span><span class="n">collect_event</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
@@ -3174,7 +3210,7 @@ $api-&gt;bulkEventsRemote(event_list);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 
 $api = new Swagger\Client\EventApi($api_client);
@@ -3228,26 +3264,27 @@ $api-&gt;collectEvent(event);
 <p>Materialized view</p>
 
 <h2 id="create-view">Create view</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/create"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/materialized-view/create"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "name" : "str", \ 
-  "query" : "str", \ 
-  "incremental" : true, \ 
-  "options" : { \ 
-    "prop" : { } \ 
-  }, \ 
-  "tableName" : "str", \ 
-  "updateInterval" : "str", \ 
-  "lastUpdate" : "2016-03-03T10:15:30.00Z" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "name" : "str",
+  "query" : "str",
+  "incremental" : true,
+  "options" : {
+    "prop" : { }
+  },
+  "tableName" : "str",
+  "updateInterval" : "str",
+  "lastUpdate" : "2016-03-03T10:15:30.00Z"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
@@ -3268,7 +3305,7 @@ $api-&gt;collectEvent(event);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -3346,18 +3383,19 @@ $api-&gt;createView(materialized_view);
 </tbody></table>
 
 <h2 id="delete-materialized-view">Delete materialized view</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/delete"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/materialized-view/delete"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "table_name" : "str" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "table_name" : "str"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
@@ -3378,7 +3416,7 @@ $api-&gt;createView(materialized_view);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -3420,18 +3458,19 @@ $api-&gt;deleteView(table_name);
 </tbody></table>
 
 <h2 id="get-view">Get view</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/get"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/materialized-view/get"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "table_name" : "str" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "table_name" : "str"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
@@ -3452,7 +3491,7 @@ $api-&gt;deleteView(table_name);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -3501,16 +3540,17 @@ $api-&gt;getView(table_name);
 </tbody></table>
 
 <h2 id="list-views">List views</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/list"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/materialized-view/list"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
@@ -3531,7 +3571,7 @@ $api-&gt;getView(table_name);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -3562,18 +3602,19 @@ $api-&gt;listViews();
 <p><code class="prettyprint">POST /materialized-view/list</code></p>
 
 <h2 id="get-schemas">Get schemas</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/schema"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/materialized-view/schema"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "names" : [ "str" ] \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "names" : [ "str" ]
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
@@ -3594,7 +3635,7 @@ $api-&gt;listViews();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -3643,16 +3684,17 @@ $api-&gt;getSchemaOfView(names);
 </tbody></table>
 
 <h2 id="update-view">Update view</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/materialized-view/update"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/materialized-view/update"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">MaterializedviewApi</span><span class="p">();</span>
@@ -3673,7 +3715,7 @@ $api-&gt;getSchemaOfView(names);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -3692,24 +3734,25 @@ $api-&gt;update();
 <p>Continuous query</p>
 
 <h2 id="create-stream">Create stream</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/create"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/continuous-query/create"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "name" : "str", \ 
-  "query" : "str", \ 
-  "options" : { \ 
-    "prop" : { } \ 
-  }, \ 
-  "tableName" : "str", \ 
-  "partitionKeys" : [ "str" ] \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "name" : "str",
+  "table_name" : "str",
+  "query" : "str",
+  "partition_keys" : [ "str" ],
+  "options" : {
+    "prop" : { }
+  }
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
@@ -3730,7 +3773,7 @@ $api-&gt;update();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -3765,14 +3808,26 @@ $api-&gt;createQuery(continuous_query);
 </thead><tbody>
 <tr>
 <td>name</td>
-<td>true</td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>table_name</td>
+<td>false</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
 <td>query</td>
-<td>true</td>
+<td>false</td>
 <td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>partition_keys</td>
+<td>false</td>
+<td>string array</td>
 <td></td>
 </tr>
 <tr>
@@ -3781,33 +3836,22 @@ $api-&gt;createQuery(continuous_query);
 <td>object</td>
 <td></td>
 </tr>
-<tr>
-<td>tableName</td>
-<td>false</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>partitionKeys</td>
-<td>false</td>
-<td>string array</td>
-<td></td>
-</tr>
 </tbody></table>
 
 <h2 id="delete-stream">Delete stream</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/delete"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/continuous-query/delete"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "table_name" : "str" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "table_name" : "str"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
@@ -3828,7 +3872,7 @@ $api-&gt;createQuery(continuous_query);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -3870,18 +3914,19 @@ $api-&gt;deleteQuery(table_name);
 </tbody></table>
 
 <h2 id="get-continuous-query">Get continuous query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/get"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/continuous-query/get"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "table_name" : "str" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "table_name" : "str"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
@@ -3902,7 +3947,7 @@ $api-&gt;deleteQuery(table_name);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -3917,12 +3962,12 @@ $api-&gt;getQuery(table_name);
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"partition_keys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"tableName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"partitionKeys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -3949,16 +3994,17 @@ $api-&gt;getQuery(table_name);
 </tbody></table>
 
 <h2 id="list-queries">List queries</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/list"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/continuous-query/list"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
@@ -3979,7 +4025,7 @@ $api-&gt;getQuery(table_name);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -3994,12 +4040,12 @@ $api-&gt;listQueries();
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"table_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"query"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"partition_keys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nt">"options"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"prop"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"tableName"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"partitionKeys"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"str"</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
@@ -4008,16 +4054,17 @@ $api-&gt;listQueries();
 <p><code class="prettyprint">POST /continuous-query/list</code></p>
 
 <h2 id="delete-stream">Delete stream</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/refresh"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/continuous-query/refresh"</span>
   -H <span class="s2">"master_key: mymaster_key"</span>
--X POST -d <span class="s1">'
-{ }'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{ }
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'master_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
@@ -4038,7 +4085,7 @@ $api-&gt;listQueries();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("master_key", "myApiKey");
 
@@ -4053,18 +4100,19 @@ $api-&gt;refreshQuery();
 <p><code class="prettyprint">GET /continuous-query/refresh</code></p>
 
 <h2 id="get-query-schema">Get query schema</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/schema"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/continuous-query/schema"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "names" : [ "str" ] \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "names" : [ "str" ]
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
@@ -4085,7 +4133,7 @@ $api-&gt;refreshQuery();
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
@@ -4134,18 +4182,19 @@ $api-&gt;getSchemaOfQuery(names);
 </tbody></table>
 
 <h2 id="test-continuous-query">Test continuous query</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"app.rakam.io/continuous-query/test"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://app.rakam.io/continuous-query/test"</span>
   -H <span class="s2">"read_key: myread_key"</span>
--X POST -d <span class="s1">'
-{ \ 
-  "query" : "str" \ 
-}'</span>
-</code></pre>
+-X POST -d @- <span class="sh">&lt;&lt; EOF 
+{
+  "query" : "str"
+}
+EOF
+</span></code></pre>
 <pre class="highlight python"><code>
 <span class="kn">from</span> <span class="nn">..api_client</span> <span class="kn">import</span> <span class="n">ApiClient</span><span class="p">;</span>
 <span class="kn">from</span> <span class="nn">..configuration</span> <span class="kn">import</span> <span class="n">Configuration</span>
 
-<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"app.rakam.io"</span><span class="p">)</span>
+<span class="n">apiClient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="s">"https://app.rakam.io"</span><span class="p">)</span>
 <span class="n">apiClient</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span><span class="p">[</span><span class="s">'read_key'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'myApiKey'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">ContinuousqueryApi</span><span class="p">();</span>
@@ -4166,7 +4215,7 @@ $api-&gt;getSchemaOfQuery(names);
 
 require_once('/path/to/org.rakam.client');
 
-$api_client = new Swagger\Client\ApiClient('app.rakam.io');
+$api_client = new Swagger\Client\ApiClient('https://app.rakam.io');
 
 $api_client-&gt;getConfig().setApiKey("read_key", "myApiKey");
 
