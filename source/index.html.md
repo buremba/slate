@@ -5273,5 +5273,3 @@ true
 |name|description|required|schema|default|
 |----|----|----|----|----|
 |collection||false|string||
-
-
